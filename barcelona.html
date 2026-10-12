@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcelona — A City Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ========== RESET & BASE ========== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --terracotta: #C1440E;
+    --sand: #F5F0E8;
+    --cream: #FEFCF7;
+    --blue: #1B6B93;
+    --charcoal: #2D2D2D;
+    --terracotta-light: #d4623a;
+    --blue-deep: #134d6a;
+    --warm-gray: #8a857d;
+    --rule: rgba(45,45,45,0.12);
+  }
+
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.6;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  a { color: inherit; }
+  a:hover { opacity: 0.8; }
+
+  /* ========== TYPOGRAPHY SYSTEM ========== */
+  .serif { font-family: 'Playfair Display', Georgia, serif; }
+  .sans { font-family: 'Inter', -apple-system, sans-serif; }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 300;
+    line-height: 1;
+    opacity: 0.07;
+    position: absolute;
+    top: -30px;
+    left: -10px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ========== LAYOUT ========== */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+  .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 32px; }
+
+  /* ========== HERO ========== */
+  .hero {
+    background: linear-gradient(165deg, var(--charcoal) 0%, #1a1a1a 40%, var(--blue-deep) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.015) 80px, rgba(255,255,255,0.015) 81px),
+      repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(255,255,255,0.015) 80px, rgba(255,255,255,0.015) 81px);
+    pointer-events: none;
+  }
+
+  .hero-pretitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 40px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(72px, 12vw, 140px);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -2px;
+    line-height: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .hero-accent {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.35);
+    font-style: italic;
+    font-size: clamp(48px, 8vw, 100px);
+    letter-spacing: 2px;
+    margin-top: 8px;
+  }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.2vw, 22px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    max-width: 500px;
+    line-height: 1.5;
+    margin-bottom: 48px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-meta span {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .hero-meta .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+    margin: 12px auto 0;
+  }
+
+  /* ========== SECTION TRANSITIONS ========== */
+  .section-divider-warm {
+    height: 6px;
+    background: linear-gradient(90deg, var(--terracotta), var(--terracotta-light), var(--blue), var(--blue-deep));
+  }
+
+  .section-divider-thin {
+    height: 1px;
+    background: var(--rule);
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+
+  /* ========== NEIGHBORHOODS ========== */
+  .neighborhoods-section {
+    background: var(--sand);
+    padding: 100px 32px;
+  }
+
+  .neighborhoods-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .neighborhoods-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-top: 16px;
+    letter-spacing: -1px;
+  }
+
+  .neighborhoods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hood-card {
+    background: var(--cream);
+    padding: 48px 36px;
+    border-radius: 2px;
+    position: relative;
+    border-top: 3px solid transparent;
+    transition: transform 0.2s ease;
+  }
+
+  .hood-card:nth-child(1) { border-top-color: var(--terracotta); }
+  .hood-card:nth-child(2) { border-top-color: var(--blue); }
+  .hood-card:nth-child(3) { border-top-color: var(--charcoal); }
+  .hood-card:nth-child(4) { border-top-color: var(--terracotta-light); }
+
+  .hood-card:hover { transform: translateY(-2px); }
+
+  .hood-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--charcoal);
+  }
+
+  .hood-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 20px;
+  }
+
+  .hood-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(45,45,45,0.75);
+  }
+
+  /* ========== PULL QUOTE ========== */
+  .pull-quote-section {
+    padding: 80px 32px;
+    text-align: center;
+    background: var(--cream);
+  }
+
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 40px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--charcoal);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.45;
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 800;
+    color: var(--terracotta);
+    opacity: 0.15;
+    position: absolute;
+    top: -50px;
+    left: -20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pull-quote-attr {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 24px;
+  }
+
+  /* ========== VENUE SECTIONS ========== */
+  .venue-section {
+    padding: 100px 0;
+  }
+
+  .venue-section-header {
+    text-align: center;
+    margin-bottom: 64px;
+    padding: 0 32px;
+  }
+
+  .venue-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-top: 16px;
+    letter-spacing: -1px;
+  }
+
+  .venue-section-header .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--warm-gray);
+    margin-top: 12px;
+  }
+
+  .venue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .venue-card {
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .venue-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .venue-card-body { padding: 28px 24px 8px; }
+
+  .venue-hood {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+
+  .venue-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .venue-name a {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .venue-name a:hover {
+    border-bottom-color: var(--charcoal);
+    opacity: 1;
+  }
+
+  .venue-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(45,45,45,0.7);
+    margin-bottom: 16px;
+  }
+
+  .venue-map-wrap {
+    padding: 0 24px 20px;
+  }
+
+  .venue-photos-link {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--blue);
+    text-decoration: none;
+    padding: 0 24px 24px;
+    transition: color 0.2s;
+  }
+
+  .venue-photos-link:hover { color: var(--blue-deep); opacity: 1; }
+
+  /* ========== SECTION COLOR BANDS ========== */
+  .bg-cream { background: var(--cream); }
+  .bg-sand { background: var(--sand); }
+
+  .bg-dark {
+    background: linear-gradient(170deg, var(--charcoal) 0%, #1f1f1f 100%);
+    color: #fff;
+  }
+
+  .bg-dark .section-label { color: rgba(255,255,255,0.35); }
+  .bg-dark .venue-section-header h2 { color: #fff; }
+  .bg-dark .venue-section-header .subtitle { color: rgba(255,255,255,0.45); }
+  .bg-dark .venue-card { background: rgba(255,255,255,0.06); box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+  .bg-dark .venue-card:hover { background: rgba(255,255,255,0.09); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .bg-dark .venue-hood { color: var(--terracotta-light); }
+  .bg-dark .venue-name { color: #fff; }
+  .bg-dark .venue-name a { color: #fff; }
+  .bg-dark .venue-desc { color: rgba(255,255,255,0.55); }
+  .bg-dark .venue-photos-link { color: rgba(255,255,255,0.45); }
+  .bg-dark .venue-photos-link:hover { color: rgba(255,255,255,0.7); }
+
+  .bg-terracotta-band {
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-light) 60%, var(--blue) 100%);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .bg-terracotta-band .pull-quote { color: #fff; }
+  .bg-terracotta-band .pull-quote::before { color: #fff; opacity: 0.2; }
+  .bg-terracotta-band .pull-quote-attr { color: rgba(255,255,255,0.5); }
+
+  .bg-blue-band {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .bg-blue-band .pull-quote { color: #fff; }
+  .bg-blue-band .pull-quote::before { color: #fff; opacity: 0.15; }
+  .bg-blue-band .pull-quote-attr { color: rgba(255,255,255,0.5); }
+
+  /* ========== INSIDER TIP ========== */
+  .insider-section {
+    background: var(--sand);
+    padding: 100px 32px;
+    text-align: center;
+  }
+
+  .insider-section .pull-quote {
+    font-size: clamp(22px, 3vw, 36px);
+    max-width: 720px;
+  }
+
+  /* ========== FOOTER ========== */
+  .magazine-footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 48px 32px;
+  }
+
+  .magazine-footer .footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+  }
+
+  .magazine-footer p {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 700px) {
+    .venue-grid { grid-template-columns: 1fr; }
+    .neighborhoods-grid { grid-template-columns: 1fr; }
+    .hero { min-height: 90vh; padding: 40px 20px; }
+    .hero-meta { gap: 20px; }
+    .venue-section, .neighborhoods-section { padding: 64px 0; }
+    .neighborhoods-section { padding: 64px 20px; }
+    .section-number { font-size: 80px; }
+    .hood-card { padding: 32px 24px; }
+    .pull-quote-section, .insider-section { padding: 56px 20px; }
+  }
+
+  /* ========== EDITORIAL UPGRADES ========== */
+  .the-pick-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .the-pick-badge--warm {
+    background: var(--accent, #C1440E);
+    color: #fff;
+  }
+
+  .the-order {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--accent, #C1440E);
+    margin-top: 6px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+  }
+
+  .once-in-a-lifetime {
+    position: relative;
+    margin: 60px auto;
+    max-width: 700px;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .once-in-a-lifetime::before {
+    content: '✦';
+    display: block;
+    font-size: 24px;
+    margin-bottom: 20px;
+    opacity: 0.3;
+  }
+  .once-in-a-lifetime__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+  .once-in-a-lifetime__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .once-in-a-lifetime__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .insider-tip-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px 28px;
+    border-left: 3px solid var(--accent, #C1440E);
+    background: rgba(0,0,0,0.02);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .insider-tip-box__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+  .insider-tip-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .insider-tip-box li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.8;
+  }
+  .insider-tip-box li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    opacity: 0.4;
+  }
+
+  .skip-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px 28px;
+    border-left: 3px solid rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.015);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .skip-box__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 12px;
+  }
+  .skip-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .skip-box li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.6;
+  }
+  .skip-box li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    opacity: 0.5;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HERO                                                          -->
+<!-- ============================================================ -->
+<section class="hero">
+  <span class="hero-pretitle">A Curated City Guide</span>
+  <h1 class="hero-title">
+    Barcelona
+    <span class="hero-accent">& its tables</span>
+  </h1>
+  <p class="hero-tagline">Everything takes longer, tastes better, and looks like someone actually gave a damn.</p>
+  <div class="hero-meta">
+    <span>Jun 7 – 11, 2027</span>
+    <span class="dot"></span>
+    <span>Home Base: Sir Victor Hotel</span>
+    <span class="dot"></span>
+    <span>Passeig de Gràcia</span>
+  </div>
+  <a href="#neighborhoods" class="hero-scroll">Scroll</a>
+</section>
+
+<div class="section-divider-warm"></div>
+
+<!-- ============================================================ -->
+<!-- 2. THE NEIGHBORHOODS                                         -->
+<!-- ============================================================ -->
+<section id="neighborhoods" class="neighborhoods-section">
+  <div class="neighborhoods-header">
+    <span class="section-label">Section One</span>
+    <h2>The Neighborhoods</h2>
+  </div>
+  <div class="neighborhoods-grid">
+
+    <div class="hood-card">
+      <h3 class="hood-name">Eixample</h3>
+      <p class="hood-subtitle">Home Base · Grand Grid</p>
+      <p class="hood-desc">The wide boulevards of the 1859 Cerdà plan are lined with Modernista masterpieces. Upper Eixample Dreta is polished — designer shops, Gaudí landmarks, serious restaurants. Eixample Esquerra and Sant Antoni trend younger, more local, more natural-wine-bar-heavy.</p>
+    </div>
+
+    <div class="hood-card">
+      <h3 class="hood-name">Gràcia</h3>
+      <p class="hood-subtitle">10 min walk north · Village Energy</p>
+      <p class="hood-desc">A former independent village that still acts like one. Narrow streets, leafy plaças, boho boutiques, and some of the city's best food. This is where Barcelona locals eat on their nights off. Cross Diagonal and you're there.</p>
+    </div>
+
+    <div class="hood-card">
+      <h3 class="hood-name">El Born</h3>
+      <p class="hood-subtitle">10 min taxi · Medieval Lanes</p>
+      <p class="hood-desc">Medieval lanes packed with artisan shops, natural wine bars, and some of Barcelona's most storied food. Santa Maria del Mar looms over everything — moody and magnificent. More curated than the Gothic Quarter, less frantic than La Rambla.</p>
+    </div>
+
+    <div class="hood-card">
+      <h3 class="hood-name">Gothic Quarter</h3>
+      <p class="hood-subtitle">15–20 min walk · Ancient Stone</p>
+      <p class="hood-desc">Roman walls, medieval stone corridors, and centuries of atmospheric grime. Moody and labyrinthine. The tourist density is high on La Rambla, but duck two blocks east and you're in ancient, quiet Barcelona.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="bg-terracotta-band">
+  <p class="pull-quote">Dinner is at 9&thinsp;PM. Showing up at 7 will get you an empty restaurant and a pitying look.</p>
+  <p class="pull-quote-attr">— Catalan dining, non-negotiable</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3. WHERE TO EAT                                              -->
+<!-- ============================================================ -->
+<section class="venue-section bg-cream">
+  <div class="venue-section-header">
+    <span class="section-label">Section Two</span>
+    <h2>Where to Eat</h2>
+    <p class="subtitle">Nine tables worth crossing a city for</p>
+  </div>
+  <div class="venue-grid">
+
+    <!-- 1. Berbena -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gràcia</p>
+        <div class="the-pick-badge the-pick-badge--warm">THE PICK — DINNER</div>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Berbena+Barcelona+Carrer+de+Minerva+6" target="_blank" rel="noopener">Berbena</a></h3>
+        <p class="venue-desc">One of Barcelona's best restaurants, full stop. Seasonal, local, intimate. Watch the kitchen work from your seat.</p>
+        <p class="the-order">The order: Seasonal tasting menu. Trust the kitchen.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4012,2.1569&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Berbena+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 2. Sato i Tanaka -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample</p>
+        <div class="the-pick-badge the-pick-badge--warm">THE PICK — ROMANTIC</div>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Sato+i+Tanaka+Barcelona" target="_blank" rel="noopener">Sato i Tanaka</a></h3>
+        <p class="venue-desc">15-seat Japanese counter on Carrer del Bruc. The omakase is intimate, precise, and deeply romantic. Book ahead.</p>
+        <p class="the-order">The order: Omakase. There is no other way.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3935,2.1693&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Sato+i+Tanaka+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 3. Bardeni -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Bardeni+Barcelona+Valencia+454" target="_blank" rel="noopener">Bardeni</a></h3>
+        <p class="venue-desc">Chef Dani Lechuga's meat temple. Not a steakhouse — more like a shrine to quality cuts and fire technique.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4010,2.1753&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Bardeni+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 4. La Cova Fumada -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Barceloneta</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/La+Cova+Fumada+Barcelona" target="_blank" rel="noopener">La Cova Fumada</a></h3>
+        <p class="venue-desc">Birthplace of the bomba. Unmarked family tavern since 1944. Cash only, no reservations, closes mid-afternoon. Queue at 12:30.</p>
+        <p class="the-order">The order: Bombas, grilled sardines, octopus. Cash only.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3792,2.1870&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/La+Cova+Fumada+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 5. Bar Cañete -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Raval</p>
+        <div class="the-pick-badge the-pick-badge--warm">THE PICK — TAPAS</div>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Bar+Cañete+Barcelona" target="_blank" rel="noopener">Bar Cañete</a></h3>
+        <p class="venue-desc">The legendary squid sandwich. One of Barcelona's truly great tapas bars — classic barra atmosphere on Carrer de la Unió.</p>
+        <p class="the-order">The order: The squid sandwich. Then anchovies, razor clams, and a cold fino sherry.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3790,2.1728&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Bar+Cañete+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 6. Franca -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Franca+Restaurant+Barcelona" target="_blank" rel="noopener">Franca</a></h3>
+        <p class="venue-desc">Modern Catalan reworkings that surprise every time. The dishes never look how you'd expect — and they're always great.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3912,2.1688&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Franca+Restaurant+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 7. Fishology -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Fishology+Barcelona" target="_blank" rel="noopener">Fishology</a></h3>
+        <p class="venue-desc">Michelin-starred nose-to-tail seafood. Carrer de la Diputació 73. Innovative, surprising, and warm.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3812,2.1541&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Fishology+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 8. Contracorrent Bistro -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gràcia</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Contracorrent+Bistro+Barcelona" target="_blank" rel="noopener">Contracorrent Bistro</a></h3>
+        <p class="venue-desc">Italian duo Niko and Anna's natural wine + seasonal food paradise. Recycled décor, garden-fresh herbs, unforgettable wines.</p>
+        <p class="the-order">The order: Seasonal pasta + let sommelier Anna pick the wine.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4020,2.1565&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Contracorrent+Bistro+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 9. Fonda Pepa -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gràcia</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Fonda+Pepa+Barcelona" target="_blank" rel="noopener">Fonda Pepa</a></h3>
+        <p class="venue-desc">Catalan classics with Mexican-inspired surprises, fresh seafood, and a leafy back patio perfect for summer evenings.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4040,2.1590&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Fonda+Pepa+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider-warm"></div>
+
+<!-- ============================================================ -->
+<!-- 4. THE COFFEE TRAIL                                          -->
+<!-- ============================================================ -->
+<section class="venue-section bg-sand">
+  <div class="venue-section-header">
+    <span class="section-label">Section Three</span>
+    <h2>The Coffee Trail</h2>
+    <p class="subtitle">Quietly one of Europe's best third-wave scenes</p>
+  </div>
+  <div class="venue-grid">
+
+    <!-- 1. Three Marks Coffee -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample · Fort Pienc</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Three+Marks+Coffee+Barcelona" target="_blank" rel="noopener">Three Marks Coffee</a></h3>
+        <p class="venue-desc">Sun-soaked industrial interior, dialed espresso. The affogato with DelaCrem hazelnut gelato is legendary.</p>
+        <p class="the-order">The order: Espresso, or the affogato with DelaCrem hazelnut gelato.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3953,2.1817&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Three+Marks+Coffee+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 2. Nomad Coffee Bar -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">El Born</p>
+        <div class="the-pick-badge the-pick-badge--warm">THE PICK — COFFEE</div>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Nomad+Coffee+Barcelona" target="_blank" rel="noopener">Nomad Coffee Bar</a></h3>
+        <p class="venue-desc">Spain's most famous specialty coffee. Minimalist green walls, purist approach. Staff guide you through origins and methods.</p>
+        <p class="the-order">The order: Single origin espresso or Chemex pour-over.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3854,2.1810&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Nomad+Coffee+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 3. SlowMov -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gràcia</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/SlowMov+Coffee+Barcelona" target="_blank" rel="noopener">SlowMov</a></h3>
+        <p class="venue-desc">Turquoise shutters, brick walls, genuinely passionate baristas. Try a winey espresso with milk and a lemon cake. A hideaway.</p>
+        <p class="the-order">The order: V60 pour-over. Ask the barista what's fruity today.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4033,2.1537&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/SlowMov+Coffee+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 4. Satan's Coffee Corner -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gothic Quarter</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Satan's+Coffee+Corner+Barcelona" target="_blank" rel="noopener">Satan's Coffee Corner</a></h3>
+        <p class="venue-desc">No WiFi, no decaf, no syrups — just exceptional coffee in the heart of the Call. Rotating weekly menu. Tiny and intense.</p>
+        <p class="the-order">The order: Whatever's on the rotating menu. Don't ask for decaf.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3827,2.1758&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Satans+Coffee+Corner+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 5. Candela Canela -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gràcia</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Candela+Canela+Barcelona" target="_blank" rel="noopener">Candela Canela</a></h3>
+        <p class="venue-desc">Bakery-café with coffee from Harmony Roasters. The cinnamon rolls and dulce de Lotus buns are absurd. Tiny — locals grab and go.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4040,2.1572&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Candela+Canela+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 6. Cafès El Magnífico -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">El Born</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Cafes+El+Magnifico+Barcelona" target="_blank" rel="noopener">Cafès El Magnífico</a></h3>
+        <p class="venue-desc">Three-generation family roaster since 1962. Their Born flagship on C/ Argenteria is a local institution. Order the cortado.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3842,2.1816&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Cafes+El+Magnifico+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="bg-blue-band">
+  <p class="pull-quote">Barcelona's third-wave scene is quietly one of Europe's best. Seven stops. No WiFi. No mercy. Pure coffee conviction.</p>
+  <p class="pull-quote-attr">— The Coffee Trail</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5. AFTER DARK                                                -->
+<!-- ============================================================ -->
+<section class="venue-section bg-dark">
+  <div class="venue-section-header">
+    <span class="section-label">Section Four</span>
+    <h2>After Dark</h2>
+    <p class="subtitle">Natural wine, speakeasies, and Barcelona's best vermouth</p>
+  </div>
+  <div class="venue-grid">
+
+    <!-- 1. Paradiso -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">El Born</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Paradiso+Speakeasy+Barcelona" target="_blank" rel="noopener">Paradiso</a></h3>
+        <p class="venue-desc">World-famous speakeasy hidden behind a pastrami bar. Walk through the fridge door. Go Tuesday or Wednesday for a shorter line.</p>
+        <p class="the-order">The order: Ask the bartender's pick. You're not here for the menu.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3852,2.1810&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Paradiso+Speakeasy+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 2. Bar Mut -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Bar+Mut+Barcelona" target="_blank" rel="noopener">Bar Mut</a></h3>
+        <p class="venue-desc">Tiny, buzzy, and excellent. Upscale tapas + great wine at Pau Claris 192. Arrive early or wait. Perfect for a nightcap.</p>
+        <p class="the-order">The order: Patatas bravas, jamón ibérico, and a glass of something Catalan.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3965,2.1673&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Bar+Mut+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 3. Vermuteria del Tano -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gràcia</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Vermuteria+del+Tano+Barcelona" target="_blank" rel="noopener">Vermuteria del Tano</a></h3>
+        <p class="venue-desc">Many claim this is the single best vermouth in all of Barcelona. No debate needed — just go.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4025,2.1548&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Vermuteria+del+Tano+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 4. Cellarer -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Cellarer+Wine+Bar+Barcelona" target="_blank" rel="noopener">Cellarer</a></h3>
+        <p class="venue-desc">Wine shop + bar. Dozens of wines by the glass (and half glass). Mallorca 211. The perfect pre-dinner stop.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3895,2.1592&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Cellarer+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 5. Bar Salvatge -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gràcia</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Bar+Salvatge+Barcelona" target="_blank" rel="noopener">Bar Salvatge</a></h3>
+        <p class="venue-desc">"Wild" natural wines on tap and by the bottle, with cheese, charcuterie, and excellent bread. Carrer de Verdi 50.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4043,2.1525&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Bar+Salvatge+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider-warm"></div>
+
+<!-- ============================================================ -->
+<!-- 6. DON'T MISS                                                -->
+<!-- ============================================================ -->
+<section class="venue-section bg-cream">
+  <div class="venue-section-header">
+    <span class="section-label">Section Five</span>
+    <h2>Don't Miss</h2>
+    <p class="subtitle">The greatest open-air architecture museum in Europe</p>
+  </div>
+  <div class="venue-grid">
+
+    <!-- 1. Sagrada Família -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample · Gaudí</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Sagrada+Familia+Barcelona" target="_blank" rel="noopener">Sagrada Família</a></h3>
+        <p class="venue-desc">The light through the stained glass at 9&thinsp;AM is one of the most beautiful things humans have built. Book tower access — Nativity facade preferred.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4036,2.1744&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Sagrada+Familia+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 2. Casa Batlló -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Eixample · Gaudí</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Casa+Batllo+Barcelona" target="_blank" rel="noopener">Casa Batlló</a></h3>
+        <p class="venue-desc">The dragon house. Bone-like balconies, iridescent tile roof, sinuous organic interior. Literally on your doorstep at Passeig de Gràcia 43.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3916,2.1650&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Casa+Batllo+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 3. Palau de la Música Catalana -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">El Born · Domènech i Montaner</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Palau+de+la+Musica+Catalana+Barcelona" target="_blank" rel="noopener">Palau de la Música</a></h3>
+        <p class="venue-desc">The most jaw-dropping concert hall you'll ever see. Stained-glass dome, floral columns, sculptural proscenium. The ceiling will wreck you.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3877,2.1754&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Palau+de+la+Musica+Catalana+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 4. Santa Maria del Mar -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">El Born · 14th-Century Gothic</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Santa+Maria+del+Mar+Barcelona" target="_blank" rel="noopener">Santa Maria del Mar</a></h3>
+        <p class="venue-desc">The people's cathedral, built by dockworkers. More beautiful than the cathedral, less crowded than Sagrada Família. Free entry.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.3836,2.1822&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Santa+Maria+del+Mar+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+    <!-- 5. Park Güell -->
+    <div class="venue-card">
+      <div class="venue-card-body">
+        <p class="venue-hood">Gràcia · Gaudí</p>
+        <h3 class="venue-name"><a href="https://www.google.com/maps/search/Park+Guell+Barcelona" target="_blank" rel="noopener">Park Güell</a></h3>
+        <p class="venue-desc">Gaudí's mosaic-covered hilltop garden. Timed entry to the monumental zone. Go at 9:30&thinsp;AM opening or late afternoon for golden light.</p>
+      </div>
+      <div class="venue-map-wrap">
+        <iframe src="https://maps.google.com/maps?q=41.4145,2.1527&output=embed&z=17" width="100%" height="180" style="border:0;border-radius:8px;" loading="lazy"></iframe>
+      </div>
+      <a class="venue-photos-link" href="https://www.google.com/maps/search/Park+Guell+Barcelona" target="_blank" rel="noopener">See real photos →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 7. THE INSIDER TIP                                           -->
+<!-- ============================================================ -->
+
+<!-- ═══════════════════════════════════════════
+     ONCE IN A LIFETIME
+     ═══════════════════════════════════════════ -->
+<section style="background: var(--sand); padding: 80px 32px;">
+  <div class="container-narrow">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="section-label" style="letter-spacing: 5px;">The Moments That Matter</span>
+    </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Sagrada Família at 9 AM</div>
+    <p class="once-in-a-lifetime__desc">Book the Nativity facade tower access at the first slot. Morning light through the stained glass creates something no photograph can capture.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">La Cova Fumada</div>
+    <p class="once-in-a-lifetime__desc">A family tavern since 1944 that invented the bomba. Unmarked door, blackboard menu, cash only. This doesn't exist anywhere else on earth.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Palau de la Música Catalana</div>
+    <p class="once-in-a-lifetime__desc">The stained-glass inverted dome is Barcelona's answer to Vienna's Secession. Leila — this one will wreck you.</p>
+  </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INSIDER TIPS + WHAT TO SKIP
+     ═══════════════════════════════════════════ -->
+<section style="background: var(--cream); padding: 80px 32px;">
+  <div class="container-narrow">
+
+  <div class="insider-tip-box">
+    <div class="insider-tip-box__label">Insider Tips</div>
+    <ul><li>Dinner before 9 PM gets you an empty restaurant and a pitying look from the waiter.</li><li>Pickpockets on La Rambla are professionals, not amateurs. Front pockets, zipped bags.</li><li>Vermouth hour (la hora del vermut) is a real thing — Sunday noon at Vermuteria del Tano is church.</li><li>The T-Casual card (10 rides, €13) is all you need. Skip the tourist passes.</li></ul>
+  </div>
+
+  <div class="skip-box">
+    <div class="skip-box__label">What to Skip</div>
+    <ul><li>Las Ramblas sit-down restaurants — tourist-priced, mediocre food, aggressive waiters.</li><li>Barceloneta beachfront paella restaurants — mass-produced for cruise passengers.</li><li>Any restaurant with photos of the food outside — universal red flag, but especially here.</li><li>The 'Gaudí Experience' 4D cinema near Park Güell — gimmicky and overpriced when the real buildings are walking distance.</li></ul>
+  </div>
+  </div>
+</section>
+
+<section class="bg-terracotta-band" style="padding:100px 32px;">
+  <span class="section-label" style="color:rgba(255,255,255,0.4);display:block;margin-bottom:32px;">The Insider Tip</span>
+  <p class="pull-quote" style="font-size:clamp(22px,3.2vw,38px);max-width:740px;">
+    Tipping is not expected in Spain. Rounding up or leaving €1–2 at a nice dinner is generous. Don't tip 20% — the waiter will think you miscounted.
+  </p>
+  <p class="pull-quote-attr" style="margin-top:32px;">— Every local, always</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                       -->
+<!-- ============================================================ -->
+<footer class="magazine-footer">
+  <p class="footer-title">Barcelona</p>
+  <p>Jun 7–11, 2027 · Ethan & Leila · Sir Victor Hotel, Passeig de Gràcia</p>
+  <p style="margin-top:8px;opacity:0.5;">Zero stock photos. Every map pin verified. See it for yourself.</p>
+</footer>
+
+</body>
+</html>

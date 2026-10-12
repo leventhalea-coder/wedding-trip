@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provence — The Magazine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   PROVENCE MAGAZINE — DESIGN TOKENS
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --lavender: #7B5EA7;
+  --lavender-light: #9B7EC7;
+  --lavender-dark: #5A3D86;
+  --gold: #D4A94B;
+  --gold-light: #E8C97A;
+  --gold-dark: #B8893A;
+  --olive: #6B7F52;
+  --olive-light: #8BA06E;
+  --cream: #FBF8F1;
+  --stone: #E8DFD0;
+  --stone-dark: #D4C9B8;
+  --charcoal: #2D2D2D;
+  --charcoal-light: #4A4A4A;
+  --white: #FFFFFF;
+
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --max-width: 1200px;
+  --narrow: 800px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--charcoal);
+  background: var(--cream);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION BAR
+   ═══════════════════════════════════════════════════════════ */
+.nav-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(43, 43, 43, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 169, 75, 0.3);
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-bar.visible { transform: translateY(0); }
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  height: 52px;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gold);
+  white-space: nowrap;
+  margin-right: 1.5rem;
+  letter-spacing: 0.02em;
+}
+.nav-link {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+.nav-link:hover { color: var(--gold-light); background: rgba(255,255,255,0.05); }
+
+/* ═══════════════════════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(170deg, var(--lavender-dark) 0%, var(--lavender) 40%, var(--lavender-light) 70%, var(--gold) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(212,169,75,0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.08) 0%, transparent 40%);
+  animation: heroShimmer 20s ease-in-out infinite alternate;
+}
+@keyframes heroShimmer {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-3%, 2%) rotate(1deg); }
+}
+.hero-kicker {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(5rem, 18vw, 14rem);
+  line-height: 0.85;
+  color: var(--white);
+  text-shadow: 0 4px 60px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.02em;
+}
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1.3rem, 3vw, 2.2rem);
+  color: rgba(255,255,255,0.85);
+  margin-top: 2rem;
+  max-width: 600px;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+.hero-meta {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.hero-scroll span {
+  display: block;
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+  margin: 0 auto;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.4; transform: scaleY(0.6); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION FRAMEWORK
+   ═══════════════════════════════════════════════════════════ */
+.section {
+  padding: 6rem 2rem;
+}
+.section--cream { background: var(--cream); }
+.section--stone { background: var(--stone); }
+.section--charcoal { background: var(--charcoal); color: var(--cream); }
+.section--lavender { background: var(--lavender); color: var(--cream); }
+.section--olive { background: var(--olive); color: var(--cream); }
+
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.section-narrow {
+  max-width: var(--narrow);
+  margin: 0 auto;
+}
+
+/* Section Headers */
+.section-header {
+  margin-bottom: 4rem;
+}
+.section-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 1;
+  color: var(--lavender);
+  opacity: 0.15;
+  margin-bottom: -1.5rem;
+  display: block;
+}
+.section--charcoal .section-number { color: var(--gold); opacity: 0.2; }
+.section--stone .section-number { color: var(--olive); opacity: 0.12; }
+.section--lavender .section-number { color: var(--white); opacity: 0.15; }
+
+.section-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.section--charcoal .section-label { color: var(--gold-light); }
+.section--lavender .section-label { color: var(--gold-light); }
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--charcoal);
+  letter-spacing: -0.01em;
+}
+.section--charcoal .section-title,
+.section--lavender .section-title,
+.section--olive .section-title { color: var(--cream); }
+
+.section-intro {
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: var(--charcoal-light);
+  max-width: 700px;
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+.section--charcoal .section-intro { color: var(--stone); }
+.section--lavender .section-intro { color: rgba(255,255,255,0.8); }
+
+/* ═══════════════════════════════════════════════════════════
+   VILLAGE CARDS
+   ═══════════════════════════════════════════════════════════ */
+.village-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
+}
+.village-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.village-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+}
+.village-map {
+  width: 100%;
+  height: 220px;
+  border: none;
+  display: block;
+}
+.village-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+.village-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--charcoal);
+  margin-bottom: 0.25rem;
+}
+.village-epithet {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--lavender);
+  margin-bottom: 0.75rem;
+}
+.village-desc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--charcoal-light);
+}
+.village-market {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--cream);
+  border-radius: 100px;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+.village-market::before {
+  content: '\25CF';
+  color: var(--gold);
+  font-size: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MARKET SCHEDULE
+   ═══════════════════════════════════════════════════════════ */
+.market-schedule {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1px;
+  background: rgba(212,169,75,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+.market-day {
+  background: var(--white);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  transition: background 0.25s ease;
+}
+.market-day:hover { background: var(--cream); }
+.market-day-name {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 0.75rem;
+}
+.market-village-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--charcoal);
+  line-height: 1.3;
+}
+.market-note {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--charcoal-light);
+  margin-top: 0.35rem;
+}
+.market-star {
+  color: var(--gold);
+  font-size: 0.75rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESTAURANT CARDS
+   ═══════════════════════════════════════════════════════════ */
+.resto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.resto-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  min-height: 260px;
+}
+.resto-card:nth-child(even) { direction: rtl; }
+.resto-card:nth-child(even) > * { direction: ltr; }
+.resto-map {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  border: none;
+  display: block;
+}
+.resto-body {
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.resto-location {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 0.5rem;
+}
+.resto-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+.resto-stars {
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-left: 0.3rem;
+}
+.resto-desc {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--charcoal-light);
+  margin-top: 0.75rem;
+}
+.resto-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.resto-tag {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border-radius: 100px;
+  background: var(--cream);
+  color: var(--charcoal-light);
+}
+.resto-tag--star { background: var(--gold); color: var(--white); }
+.resto-tag--reserve { background: var(--lavender); color: var(--white); }
+
+/* Text-only restaurant items (no map) */
+.resto-text-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.resto-text-item {
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.6);
+  border-radius: 8px;
+  border-left: 3px solid var(--gold);
+}
+.resto-text-item .resto-name { font-size: 1.2rem; }
+.resto-text-item .resto-desc { font-size: 1rem; margin-top: 0.5rem; }
+
+/* ═══════════════════════════════════════════════════════════
+   WINE TRAIL
+   ═══════════════════════════════════════════════════════════ */
+.wine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.wine-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(212,169,75,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+.wine-card:hover { border-color: var(--gold); }
+.wine-map {
+  width: 100%;
+  height: 180px;
+  border: none;
+  display: block;
+}
+.wine-body {
+  padding: 1.5rem;
+}
+.wine-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--cream);
+}
+.wine-commune {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-top: 0.25rem;
+}
+.wine-desc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--stone);
+  margin-top: 0.75rem;
+}
+.wine-badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  background: rgba(107,127,82,0.3);
+  color: var(--olive-light);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COAST SECTION
+   ═══════════════════════════════════════════════════════════ */
+.coast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+}
+.coast-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.coast-map {
+  width: 100%;
+  height: 220px;
+  border: none;
+  display: block;
+}
+.coast-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+.coast-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--charcoal);
+}
+.coast-desc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--charcoal-light);
+  margin-top: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COFFEE CARDS
+   ═══════════════════════════════════════════════════════════ */
+.coffee-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.coffee-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(212,169,75,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.coffee-card:hover { border-color: var(--gold-light); }
+.coffee-map {
+  width: 100%;
+  height: 160px;
+  border: none;
+  display: block;
+}
+.coffee-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.coffee-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--cream);
+}
+.coffee-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--stone);
+  margin-top: 0.4rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DON'T MISS CARDS
+   ═══════════════════════════════════════════════════════════ */
+.miss-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.miss-card {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 0;
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 30px rgba(0,0,0,0.07);
+}
+.miss-map {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  border: none;
+  display: block;
+}
+.miss-body {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.miss-label {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 0.5rem;
+}
+.miss-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+.miss-desc {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--charcoal-light);
+  margin-top: 0.75rem;
+}
+.miss-tip {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--cream);
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--olive);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INSIDER TIP
+   ═══════════════════════════════════════════════════════════ */
+.insider-section {
+  background: linear-gradient(170deg, var(--lavender-dark) 0%, var(--lavender) 60%, var(--gold) 100%);
+  padding: 8rem 2rem;
+  text-align: center;
+}
+.insider-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 6rem;
+  color: rgba(255,255,255,0.08);
+  line-height: 1;
+}
+.insider-label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-top: 1rem;
+}
+.insider-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--white);
+  margin-top: 0.75rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.insider-body {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.85);
+  max-width: 650px;
+  margin: 2rem auto 0;
+  font-style: italic;
+}
+.insider-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  border: none;
+  margin: 3rem auto 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PULL QUOTE
+   ═══════════════════════════════════════════════════════════ */
+.pull-quote {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 750px;
+  margin: 0 auto;
+}
+.pull-quote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.5;
+  color: var(--lavender);
+}
+.pull-quote-rule {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  border: none;
+  margin: 0 auto 1.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DECORATIVE DIVIDER
+   ═══════════════════════════════════════════════════════════ */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3rem 2rem;
+}
+.divider-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+.divider-diamond {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════ */
+.footer {
+  background: var(--charcoal);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.footer-text {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--stone-dark);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.footer-sign {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-top: 1.5rem;
+}
+.footer-small {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.25);
+  margin-top: 2rem;
+  letter-spacing: 0.1em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .resto-card,
+  .miss-card {
+    grid-template-columns: 1fr;
+  }
+  .resto-card:nth-child(even) { direction: ltr; }
+  .resto-map,
+  .miss-map { min-height: 200px; }
+  .section { padding: 4rem 1.25rem; }
+  .village-grid { grid-template-columns: 1fr; }
+  .market-schedule { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .hero-title { font-size: clamp(3.5rem, 16vw, 7rem); }
+  .section { padding: 3rem 1rem; }
+  .wine-grid,
+  .coffee-row { grid-template-columns: 1fr; }
+  .coast-grid { grid-template-columns: 1fr; }
+  .nav-inner { padding: 0 1rem; }
+  .resto-body,
+  .miss-body { padding: 1.5rem; }
+}
+
+  /* ========== EDITORIAL UPGRADES ========== */
+  .the-pick-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .the-pick-badge--warm {
+    background: var(--accent, #7B5EA7);
+    color: #fff;
+  }
+
+  .the-order {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--accent, #7B5EA7);
+    margin-top: 6px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+  }
+
+  .once-in-a-lifetime {
+    position: relative;
+    margin: 60px auto;
+    max-width: 700px;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .once-in-a-lifetime::before {
+    content: '✦';
+    display: block;
+    font-size: 24px;
+    margin-bottom: 20px;
+    opacity: 0.3;
+  }
+  .once-in-a-lifetime__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+  .once-in-a-lifetime__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .once-in-a-lifetime__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .insider-tip-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px 28px;
+    border-left: 3px solid var(--accent, #7B5EA7);
+    background: rgba(0,0,0,0.02);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .insider-tip-box__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+  .insider-tip-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .insider-tip-box li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.8;
+  }
+  .insider-tip-box li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    opacity: 0.4;
+  }
+
+  .skip-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px 28px;
+    border-left: 3px solid rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.015);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .skip-box__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 12px;
+  }
+  .skip-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .skip-box li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.6;
+  }
+  .skip-box li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    opacity: 0.5;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="nav-bar" id="navBar">
+  <div class="nav-inner">
+    <span class="nav-brand">Provence</span>
+    <a href="#villages" class="nav-link">Villages</a>
+    <a href="#markets" class="nav-link">Markets</a>
+    <a href="#eat" class="nav-link">Dining</a>
+    <a href="#wine" class="nav-link">Wine</a>
+    <a href="#coast" class="nav-link">Coast</a>
+    <a href="#coffee" class="nav-link">Coffee</a>
+    <a href="#dontmiss" class="nav-link">Don&rsquo;t Miss</a>
+    <a href="#insider" class="nav-link">Insider</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     1. HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <span class="hero-kicker">Luberon &middot; Cassis &middot; Calanques &middot; Avignon</span>
+  <h1 class="hero-title">Provence</h1>
+  <p class="hero-subtitle">Lavender fields, ochre cliffs, hilltop villages glowing gold at sunset &mdash; the definitive guide to the south of France</p>
+  <span class="hero-meta">June 2027 &ensp;&bull;&ensp; A Travel Magazine</span>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     2. THE VILLAGES
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section--cream" id="villages">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <span class="section-label">Luberon</span>
+      <h2 class="section-title">The Villages</h2>
+      <p class="section-intro">Stone villages perched on cliff edges, ochre-red facades glowing in the afternoon light, platane-shaded squares where p&eacute;tanque and ros&eacute; are the only agenda. These are the hilltop jewels of the Luberon.</p>
+    </div>
+
+    <div class="village-grid">
+      <!-- Gordes -->
+      <div class="village-card">
+        <iframe class="village-map" src="https://www.google.com/maps?q=43.9114,5.2003&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Gordes satellite view"></iframe>
+        <div class="village-body">
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — MARKET DAY</div>
+          <h3 class="village-name">Gordes</h3>
+          <span class="village-epithet">The Crown Jewel</span>
+          <p class="village-desc">The most photographed village in Provence. Stone houses cascade down a cliff face in a gravity-defying tumble of warm limestone. The classic view from the D15 approach road is the shot that sells a thousand plane tickets.</p>
+          <span class="village-market">Market &mdash; Tuesday</span>
+        </div>
+      </div>
+
+      <!-- Roussillon -->
+      <div class="village-card">
+        <iframe class="village-map" src="https://www.google.com/maps?q=43.9017,5.2941&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Roussillon satellite view"></iframe>
+        <div class="village-body">
+          <h3 class="village-name">Roussillon</h3>
+          <span class="village-epithet">The Ochre Village</span>
+          <p class="village-desc">Buildings painted in every shade of red, orange, and gold, drawn from the ochre cliffs that cradle it. Walk the Sentier des Ocres &mdash; a 30-minute trail through surreal formations that look like they belong on Mars.</p>
+          <span class="village-market">Market &mdash; Thursday</span>
+        </div>
+      </div>
+
+      <!-- Bonnieux -->
+      <div class="village-card">
+        <iframe class="village-map" src="https://www.google.com/maps?q=43.8231,5.3067&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Bonnieux satellite view"></iframe>
+        <div class="village-body">
+          <h3 class="village-name">Bonnieux</h3>
+          <span class="village-epithet">The Literary Village</span>
+          <p class="village-desc">Perched on a ridge with sweeping views toward the Luberon massif. Home to two Michelin-starred restaurants, a legendary bakery, and the kind of quiet confidence that comes from centuries of knowing you&rsquo;re beautiful.</p>
+          <span class="village-market">Market &mdash; Friday</span>
+        </div>
+      </div>
+
+      <!-- Lourmarin -->
+      <div class="village-card">
+        <iframe class="village-map" src="https://www.google.com/maps?q=43.7653,5.3618&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Lourmarin satellite view"></iframe>
+        <div class="village-body">
+          <h3 class="village-name">Lourmarin</h3>
+          <span class="village-epithet">The Chic Village</span>
+          <p class="village-desc">The &ldquo;Saint-Germain of the Luberon.&rdquo; Galleries, boutiques, and the liveliest caf&eacute; scene in the valley. Albert Camus is buried here. The Friday market is one of the best in the region &mdash; come hungry.</p>
+          <span class="village-market">Market &mdash; Friday</span>
+        </div>
+      </div>
+
+      <!-- L'Isle-sur-la-Sorgue -->
+      <div class="village-card">
+        <iframe class="village-map" src="https://www.google.com/maps?q=43.9197,5.0528&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="L'Isle-sur-la-Sorgue satellite view"></iframe>
+        <div class="village-body">
+          <h3 class="village-name">L&rsquo;Isle-sur-la-Sorgue</h3>
+          <span class="village-epithet">The Venice of Provence</span>
+          <p class="village-desc">Waterwheels turn over crystal-clear canals that lace through the old town. The Sunday antique market draws 300+ dealers and is one of the largest in Europe. Even on quiet days, the green water is hypnotic.</p>
+          <span class="village-market">Market &mdash; Sunday &amp; Thursday</span>
+        </div>
+      </div>
+
+      <!-- Ménerbes -->
+      <div class="village-card">
+        <iframe class="village-map" src="https://www.google.com/maps?q=43.8335,5.2060&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Ménerbes satellite view"></iframe>
+        <div class="village-body">
+          <h3 class="village-name">M&eacute;nerbes</h3>
+          <span class="village-epithet">Peter Mayle&rsquo;s Village</span>
+          <p class="village-desc">Made famous by <em>A Year in Provence</em>, M&eacute;nerbes remains authentically unhurried. The hilltop views over vineyards at sunset are among the finest in the Luberon. Don&rsquo;t miss the corkscrew museum at nearby Domaine de la Citadelle.</p>
+          <span class="village-market">No fixed market &mdash; just magic</span>
+        </div>
+      </div>
+
+    </div><!-- /village-grid -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PULL QUOTE
+     ═══════════════════════════════════════════════════════════ -->
+<div class="section section--stone">
+  <div class="pull-quote">
+    <hr class="pull-quote-rule">
+    <p class="pull-quote-text">&ldquo;In Provence, time moves differently. The light is golden longer. The wine tastes better because you&rsquo;re drinking it in the place where the grapes grew.&rdquo;</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     3. THE MARKETS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section--cream" id="markets">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <span class="section-label">Jours de March&eacute;</span>
+      <h2 class="section-title">The Markets</h2>
+      <p class="section-intro">Every village has its day. Tomatoes warm from the sun, goat cheese wrapped in chestnut leaves, baskets of cherries, saucisson by the metre, lavender honey sold from the back of a van. This is where Provence feeds itself.</p>
+    </div>
+
+    <div class="market-schedule">
+      <div class="market-day">
+        <div class="market-day-name">Sunday</div>
+        <div class="market-village-name">L&rsquo;Isle-sur-la-Sorgue</div>
+        <div class="market-note">The legendary antiques market <span class="market-star">&starf;</span></div>
+      </div>
+      <div class="market-day">
+        <div class="market-day-name">Monday</div>
+        <div class="market-village-name">Cavaillon</div>
+        <div class="market-note">Traditional Proven&ccedil;al</div>
+      </div>
+      <div class="market-day">
+        <div class="market-day-name">Tuesday</div>
+        <div class="market-village-name">Gordes</div>
+        <div class="market-note">Under the platanes <span class="market-star">&starf;</span></div>
+      </div>
+      <div class="market-day">
+        <div class="market-day-name">Wednesday</div>
+        <div class="market-village-name">Sault</div>
+        <div class="market-note">Lavender plateau</div>
+      </div>
+      <div class="market-day">
+        <div class="market-day-name">Thursday</div>
+        <div class="market-village-name">Roussillon</div>
+        <div class="market-note">Ochre village market</div>
+      </div>
+      <div class="market-day">
+        <div class="market-day-name">Friday</div>
+        <div class="market-village-name">Lourmarin</div>
+        <div class="market-note">One of the best <span class="market-star">&starf;</span></div>
+      </div>
+      <div class="market-day">
+        <div class="market-day-name">Saturday</div>
+        <div class="market-village-name">Apt</div>
+        <div class="market-note">The biggest in the Vaucluse <span class="market-star">&starf;</span></div>
+      </div>
+    </div>
+
+    <div class="divider">
+      <span class="divider-line"></span>
+      <span class="divider-diamond"></span>
+      <span class="divider-line"></span>
+    </div>
+
+    <div class="section-narrow" style="text-align:center;">
+      <p style="font-family:var(--font-body); font-size:1.15rem; color:var(--charcoal-light); font-style:italic;">
+        Also: Bonnieux on Fridays &middot; L&rsquo;Isle-sur-la-Sorgue on Thursdays &middot; Aubagne on Tue/Thu/Sat/Sun
+      </p>
+      <p style="font-family:var(--font-ui); font-size:0.75rem; color:var(--olive); margin-top:1rem; letter-spacing:0.05em;">
+        Arrive by 8:00 AM for the best selection. Bring a basket. Bring cash for the small vendors.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     4. WHERE TO EAT
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section--stone" id="eat">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <span class="section-label">Gastronomie</span>
+      <h2 class="section-title">Where to Eat</h2>
+      <p class="section-intro">From Michelin-starred terraces perched above the Luberon valley to portside bistros where the fish was swimming an hour ago. Proven&ccedil;al cooking is sunshine on a plate.</p>
+    </div>
+
+    <!-- Featured restaurants with maps -->
+    <div class="resto-list">
+
+      <!-- La Bastide de Capelongue -->
+      <div class="resto-card">
+        <iframe class="resto-map" src="https://www.google.com/maps?q=43.8275,5.3085&z=16&t=k&output=embed" loading="lazy" allowfullscreen title="La Bastide de Capelongue"></iframe>
+        <div class="resto-body">
+          <span class="resto-location">Bonnieux</span>
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — FINE DINING</div>
+          <h3 class="resto-name">La Bastide de Capelongue <span class="resto-stars">&starf;</span></h3>
+          <p class="resto-desc">Panoramic terrace overlooking the Luberon valley. Bold, elegant cuisine &mdash; veal from Gordes, trout from the Sorgue, Camargue oysters. Sunset here is otherworldly. This is the big night.</p>
+          <p class="the-order">The order: Tasting menu on the terrace at sunset. Book weeks ahead for 10.</p>
+          <div class="resto-meta">
+            <span class="resto-tag resto-tag--star">Michelin Star</span>
+            <span class="resto-tag resto-tag--reserve">Reserve weeks ahead</span>
+            <span class="resto-tag">&euro;&euro;&euro;&euro;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- La Villa Madie -->
+      <div class="resto-card">
+        <iframe class="resto-map" src="https://www.google.com/maps?q=43.2155,5.5350&z=16&t=k&output=embed" loading="lazy" allowfullscreen title="La Villa Madie"></iframe>
+        <div class="resto-body">
+          <span class="resto-location">Cassis</span>
+          <h3 class="resto-name">La Villa Madie <span class="resto-stars">&starf;&starf;</span></h3>
+          <p class="resto-desc">Perched on Anse de Corton, overlooking the sea. Chef Dimitri Droisneau&rsquo;s tasting menus are extraordinary. If you want one blow-out meal on the coast, this is it.</p>
+          <div class="resto-meta">
+            <span class="resto-tag resto-tag--star">Two Michelin Stars</span>
+            <span class="resto-tag resto-tag--reserve">Book 2+ months ahead</span>
+            <span class="resto-tag">&euro;&euro;&euro;&euro;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant Le Mas -->
+      <div class="resto-card">
+        <iframe class="resto-map" src="https://www.google.com/maps?q=43.9080,5.1950&z=16&t=k&output=embed" loading="lazy" allowfullscreen title="Restaurant Le Mas"></iframe>
+        <div class="resto-body">
+          <span class="resto-location">Gordes</span>
+          <h3 class="resto-name">Restaurant Le Mas</h3>
+          <p class="resto-desc">Michelin-recognized. Chef Alexis Osmont&rsquo;s market-driven cuisine in a centuries-old mas with a dreamy terrace. One of the best meals in the Luberon. Watch sunset from the D15 first, then walk to dinner.</p>
+          <div class="resto-meta">
+            <span class="resto-tag resto-tag--star">Michelin Recognized</span>
+            <span class="resto-tag resto-tag--reserve">Book for groups</span>
+            <span class="resto-tag">&euro;&euro;&euro;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Number 75 -->
+      <div class="resto-card">
+        <iframe class="resto-map" src="https://www.google.com/maps?q=43.9475,4.8075&z=16&t=k&output=embed" loading="lazy" allowfullscreen title="Number 75 Avignon"></iframe>
+        <div class="resto-body">
+          <span class="resto-location">Avignon</span>
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — GROUP DINNER</div>
+          <h3 class="resto-name">Number 75</h3>
+          <p class="resto-desc">Wine bar and bistro in a gorgeous townhouse courtyard. The kind of place where you order one more glass and one more plate and suddenly it&rsquo;s midnight and the courtyard is lit by candles and you never want to leave.</p>
+          <p class="the-order">The order: Wine flight + whatever the kitchen is running. Reserve for 10.</p>
+          <div class="resto-meta">
+            <span class="resto-tag">&euro;&euro;</span>
+            <span class="resto-tag resto-tag--reserve">Reserve for groups</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- La Presqu'île -->
+      <div class="resto-card">
+        <iframe class="resto-map" src="https://www.google.com/maps?q=43.2110,5.5290&z=16&t=k&output=embed" loading="lazy" allowfullscreen title="La Presqu'île Cassis"></iframe>
+        <div class="resto-body">
+          <span class="resto-location">Cassis</span>
+          <h3 class="resto-name">La Presqu&rsquo;&icirc;le</h3>
+          <p class="resto-desc">Between the port and the Calanques, with views over the Bay of Cassis and Cap Canaille. Southern French cuisine since 1978. The ultimate sunset dinner for a table of friends.</p>
+          <div class="resto-meta">
+            <span class="resto-tag">&euro;&euro;&euro;</span>
+            <span class="resto-tag resto-tag--reserve">Must reserve for groups</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /resto-list -->
+
+    <!-- Additional restaurants, text only -->
+    <div style="margin-top:3.5rem;">
+      <h3 style="font-family:var(--font-display); font-size:1.5rem; color:var(--charcoal); margin-bottom:0.5rem;">Also on our list</h3>
+      <p style="font-family:var(--font-body); font-style:italic; font-size:1.05rem; color:var(--charcoal-light); margin-bottom:1.5rem;">For long lunches, casual evenings, and happy sunburns</p>
+    </div>
+    <div class="resto-text-list">
+      <div class="resto-text-item">
+        <h4 class="resto-name">JU &mdash; Maison de Cuisine</h4>
+        <span class="resto-location">Bonnieux &ensp;&starf; Michelin Star</span>
+        <p class="resto-desc">Intimate tasting menus in a stone Proven&ccedil;al house. Better for two than ten. May be your best meal of the trip.</p>
+      </div>
+      <div class="resto-text-item">
+        <h4 class="resto-name">Le Caf&eacute; de la Poste</h4>
+        <span class="resto-location">Goult</span>
+        <p class="resto-desc">Village square, plane trees, plats du jour, carafes of ros&eacute;. The platonic ideal of a Proven&ccedil;al lunch.</p>
+          <p class="the-order">The order: Long lunch. Wine carafe, croque monsieur, and nowhere to be.</p>
+      </div>
+      <div class="resto-text-item">
+        <h4 class="resto-name">Le Petit Caf&eacute;</h4>
+        <span class="resto-location">Lourmarin</span>
+        <p class="resto-desc">The social hub of Lourmarin. Terrace, charcuterie, people-watching. Friday market lunch perfection.</p>
+      </div>
+      <div class="resto-text-item">
+        <h4 class="resto-name">La Closerie</h4>
+        <span class="resto-location">Roussillon</span>
+        <p class="resto-desc">Terrace with views over the ochre cliffs. Ratatouille, tapenade, grilled fish. Post-Ochre-Trail reward.</p>
+      </div>
+      <div class="resto-text-item">
+        <h4 class="resto-name">Le Bistrot de Nino</h4>
+        <span class="resto-location">Cassis</span>
+        <p class="resto-desc">Right on the port. Grilled fish, pasta, ros&eacute; by the carafe. The right energy for friends.</p>
+      </div>
+      <div class="resto-text-item">
+        <div class="the-pick-badge the-pick-badge--warm">THE PICK — ROMANTIC</div>
+          <h4 class="resto-name">Chez Tania</h4>
+        <span class="resto-location">La Ciotat &middot; Calanque de Figuerolles</span>
+        <p class="resto-desc">Hidden in a calanque. Feet-in-the-water dining. The setting is the star.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     5. THE WINE TRAIL
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section--charcoal" id="wine">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <span class="section-label">Les Vignobles</span>
+      <h2 class="section-title">The Wine Trail</h2>
+      <p class="section-intro">Luberon ros&eacute;s pale as dawn. Organic reds from the ch&acirc;teau Russell Crowe made famous. Formal gardens with classified status. Corkscrew museums. The Luberon wine scene is serious but never solemn.</p>
+    </div>
+
+    <div class="wine-grid">
+      <!-- Château La Canorgue -->
+      <div class="wine-card">
+        <iframe class="wine-map" src="https://www.google.com/maps?q=43.8280,5.3100&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Château La Canorgue"></iframe>
+        <div class="wine-body">
+          <h3 class="wine-name">Ch&acirc;teau La Canorgue</h3>
+          <span class="wine-commune">Bonnieux &ensp;&middot;&ensp; 15 min from And&eacute;ols</span>
+          <p class="wine-desc">Organic pioneer of the Luberon, featured in <em>A Good Year</em>. Family-run, award-winning ros&eacute; and whites. Relaxed, authentic, no pretension.</p>
+          <span class="wine-badge">&#127807; Organic</span>
+        </div>
+      </div>
+
+      <!-- Château Val Joanis -->
+      <div class="wine-card">
+        <iframe class="wine-map" src="https://www.google.com/maps?q=43.7008,5.5000&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Château Val Joanis"></iframe>
+        <div class="wine-body">
+          <h3 class="wine-name">Ch&acirc;teau Val Joanis</h3>
+          <span class="wine-commune">Pertuis &ensp;&middot;&ensp; 30 min from And&eacute;ols</span>
+          <p class="wine-desc">Stunning estate with a Jardin Remarquable. Wine tasting in the cellar, then stroll through formal gardens with a glass of ros&eacute;. Group-friendly and photogenic.</p>
+          <span class="wine-badge">Jardin Remarquable</span>
+        </div>
+      </div>
+
+      <!-- Château La Verrerie -->
+      <div class="wine-card">
+        <iframe class="wine-map" src="https://www.google.com/maps?q=43.7600,5.4200&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Château La Verrerie"></iframe>
+        <div class="wine-body">
+          <h3 class="wine-name">Ch&acirc;teau La Verrerie</h3>
+          <span class="wine-commune">Puget-sur-Durance &ensp;&middot;&ensp; 25 min</span>
+          <p class="wine-desc">Historic 18th-century estate. Three tasting parcours available. Ancient stone buildings amid rolling vineyards &mdash; the setting alone is worth the visit.</p>
+          <span class="wine-badge">Three Parcours</span>
+        </div>
+      </div>
+
+      <!-- Domaine de la Citadelle -->
+      <div class="wine-card">
+        <iframe class="wine-map" src="https://www.google.com/maps?q=43.8320,5.2100&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Domaine de la Citadelle"></iframe>
+        <div class="wine-body">
+          <h3 class="wine-name">Domaine de la Citadelle</h3>
+          <span class="wine-commune">M&eacute;nerbes &ensp;&middot;&ensp; 20 min</span>
+          <p class="wine-desc">Excellent Luberon wines plus a museum of 1,200 corkscrews. Fun, quirky, and the terrace views are spectacular. Culture and wine in one stop.</p>
+          <span class="wine-badge">Corkscrew Museum</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     6. THE COAST
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section--cream" id="coast">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <span class="section-label">La M&eacute;diterran&eacute;e</span>
+      <h2 class="section-title">The Coast</h2>
+      <p class="section-intro">Dramatic limestone fjords plunging into turquoise water. France&rsquo;s answer to the Amalfi Coast, but wilder. Cassis has its own AOC wine appellation and the highest maritime cliff in Europe next door.</p>
+    </div>
+
+    <div class="coast-grid">
+      <!-- Cassis -->
+      <div class="coast-card">
+        <iframe class="coast-map" src="https://www.google.com/maps?q=43.2141,5.5398&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Cassis port town"></iframe>
+        <div class="coast-body">
+          <h3 class="coast-name">Cassis</h3>
+          <p class="coast-desc">One of the most beautiful small ports in the Mediterranean. Pastel buildings, fishing boats, cliff-backed beaches, and its own AOC wine appellation famous for whites and ros&eacute;s. Evening aperitif on the port watching the boats come in is non-negotiable.</p>
+        </div>
+      </div>
+
+      <!-- Calanque d'En-Vau -->
+      <div class="coast-card">
+        <iframe class="coast-map" src="https://www.google.com/maps?q=43.2028,5.4970&z=16&t=k&output=embed" loading="lazy" allowfullscreen title="Calanque d'En-Vau"></iframe>
+        <div class="coast-body">
+          <h3 class="coast-name">Calanque d&rsquo;En-Vau</h3>
+          <p class="coast-desc">The most spectacular of the Calanques &mdash; a narrow fjord between towering white limestone cliffs, with water so turquoise it looks rendered. Hike in or boat in from Cassis port. Book the morning slot before the Mistral kicks up.</p>
+        </div>
+      </div>
+
+      <!-- Cap Canaille -->
+      <div class="coast-card">
+        <iframe class="coast-map" src="https://www.google.com/maps?q=43.1970,5.5320&z=15&t=k&output=embed" loading="lazy" allowfullscreen title="Cap Canaille"></iframe>
+        <div class="coast-body">
+          <h3 class="coast-name">Cap Canaille</h3>
+          <p class="coast-desc">The highest maritime cliff in Europe at 394 metres. Drive the Route des Cr&ecirc;tes between Cassis and La Ciotat, pull over at every viewpoint. The sunset from up here, looking down at the Calanques, is the photo of a lifetime.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     7. THE COFFEE TRAIL
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section--olive" id="coffee">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-number" style="color:var(--cream); opacity:0.1;">06</span>
+      <span class="section-label" style="color:var(--gold-light);">Caf&eacute;s</span>
+      <h2 class="section-title">The Coffee Trail</h2>
+      <p class="section-intro" style="color:rgba(255,255,255,0.75);">Avignon&rsquo;s walled city hides a surprising specialty coffee scene. Third-wave roasters, banana bread, curated interiors &mdash; the morning ritual, Proven&ccedil;al edition.</p>
+    </div>
+
+    <div class="coffee-row">
+      <!-- Tulipe -->
+      <div class="coffee-card">
+        <iframe class="coffee-map" src="https://www.google.com/maps?q=43.9485,4.8065&z=17&t=k&output=embed" loading="lazy" allowfullscreen title="Tulipe Avignon"></iframe>
+        <div class="coffee-body">
+          <h3 class="coffee-name">Tulipe</h3>
+          <p class="coffee-desc">Specialty coffee and eco-responsible restaurant. The best third-wave coffee in the Vaucluse. Lovely space, conscious sourcing.</p>
+        </div>
+      </div>
+
+      <!-- Édition Café -->
+      <div class="coffee-card">
+        <iframe class="coffee-map" src="https://www.google.com/maps?q=43.9490,4.8050&z=17&t=k&output=embed" loading="lazy" allowfullscreen title="Édition Café Avignon"></iframe>
+        <div class="coffee-body">
+          <h3 class="coffee-name">&Eacute;dition Caf&eacute;</h3>
+          <p class="coffee-desc">Cool vibes, specialty coffee, banana bread. The morning slow-down spot before the villages wake up.</p>
+        </div>
+      </div>
+
+      <!-- KOUK -->
+      <div class="coffee-card">
+        <iframe class="coffee-map" src="https://www.google.com/maps?q=43.9480,4.8060&z=17&t=k&output=embed" loading="lazy" allowfullscreen title="KOUK Avignon"></iframe>
+        <div class="coffee-body">
+          <h3 class="coffee-name">KOUK</h3>
+          <p class="coffee-desc">Specialty coffee with a curated interior. For the crew that needs their morning ritual before anything else happens.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     8. DON'T MISS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section section--cream" id="dontmiss">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <span class="section-label">&Agrave; Ne Pas Manquer</span>
+      <h2 class="section-title">Don&rsquo;t Miss</h2>
+      <p class="section-intro">The moments that become the trip. Lavender in peak bloom. Ochre canyons on another planet. A 12th-century abbey where monks still live and work. Set the alarm. Make the drive. Thank us later.</p>
+    </div>
+
+    <div class="miss-stack">
+      <!-- Sénanque Abbey -->
+      <div class="miss-card">
+        <iframe class="miss-map" src="https://www.google.com/maps?q=43.9280,5.1870&z=16&t=k&output=embed" loading="lazy" allowfullscreen title="Abbaye de Sénanque"></iframe>
+        <div class="miss-body">
+          <span class="miss-label">Lavender &amp; History</span>
+          <div class="the-pick-badge the-pick-badge--warm">ONCE IN A LIFETIME</div>
+          <h3 class="miss-name">Abbaye Notre-Dame de S&eacute;nanque</h3>
+          <p class="miss-desc">The most photographed lavender field in the world &mdash; perfect rows of purple with a 12th-century Cistercian abbey behind. The monks still live and work here. Late June is peak bloom.</p>
+          <div class="miss-tip">
+            <strong>Tip:</strong> Arrive at sunrise (~6 AM) for the light and no crowds. The scent of lavender in the morning heat is transcendent. 30 min from And&eacute;ols via Gordes.
+          </div>
+        </div>
+      </div>
+
+      <!-- Valensole Plateau -->
+      <div class="miss-card">
+        <iframe class="miss-map" src="https://www.google.com/maps?q=43.8370,5.9830&z=13&t=k&output=embed" loading="lazy" allowfullscreen title="Valensole Plateau"></iframe>
+        <div class="miss-body">
+          <span class="miss-label">Lavender Fields</span>
+          <h3 class="miss-name">Valensole Plateau</h3>
+          <p class="miss-desc">800 km&sup2; of lavender fields rolling to the horizon. The most dramatic lavender landscape in Provence. The lone tree, the stone barn, the crossroads &mdash; the photography spots are legendary.</p>
+          <div class="miss-tip">
+            <strong>Tip:</strong> Best at golden hour. ~1h 15m from And&eacute;ols. Combine with a visit to the clifftop village of Moustiers-Sainte-Marie for the full day trip.
+          </div>
+        </div>
+      </div>
+
+      <!-- Sentier des Ocres -->
+      <div class="miss-card">
+        <iframe class="miss-map" src="https://www.google.com/maps?q=43.9010,5.2900&z=16&t=k&output=embed" loading="lazy" allowfullscreen title="Sentier des Ocres"></iframe>
+        <div class="miss-body">
+          <span class="miss-label">Natural Wonder</span>
+          <h3 class="miss-name">Sentier des Ocres</h3>
+          <p class="miss-desc">A 30&ndash;45 minute walk through surreal ochre cliff formations in shades of red, orange, and gold. It looks like Mars, it feels like a dream, and it costs &euro;3. Adjacent to Roussillon village.</p>
+          <div class="miss-tip">
+            <strong>Tip:</strong> Wear shoes you don&rsquo;t mind staining ochre-red. The pigment is real and it gets everywhere. That&rsquo;s part of the charm. 15 min from And&eacute;ols.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     9. THE INSIDER TIP
+     ═══════════════════════════════════════════════════════════ -->
+<section class="insider-section" id="insider">
+  <span class="insider-number">08</span>
+  <span class="insider-label">The Insider Tip</span>
+  <h2 class="insider-title">Skip the Autoroute. Take the D-Roads.</h2>
+  <p class="insider-body">
+    The D-roads &mdash; the d&eacute;partementales &mdash; are the soul of Provence. Winding through vineyards, past lavender fields, under canopies of plane trees. They&rsquo;re slower. That&rsquo;s the point. Every wrong turn reveals a village you didn&rsquo;t know existed, a view you can&rsquo;t find on Google, a roadside stand selling melons and honey. The A7 gets you there. The D2, D36, D943 &mdash; they make you fall in love.
+  </p>
+  <hr class="insider-rule">
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <p class="footer-text">&ldquo;The friends are closer because you laughed harder. And when the lavender blooms and the sun sets over a hilltop village and someone you love is beside you &mdash; you&rsquo;ll remember this week for the rest of your life.&rdquo;</p>
+  <p class="footer-sign">&Agrave; votre sant&eacute;. &#129346;&#127803;</p>
+  <p class="footer-small">Compiled October 2026 &ensp;&bull;&ensp; Verify hours, prices &amp; reservations closer to travel &ensp;&bull;&ensp; Lavender bloom dates are approximate</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPT — Nav reveal on scroll
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  const nav = document.getElementById('navBar');
+  const hero = document.getElementById('hero');
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        if (heroBottom < 0) {
+          nav.classList.add('visible');
+        } else {
+          nav.classList.remove('visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+</script>
+
+
+<!-- ═══════════════════════════════════════════
+     ONCE IN A LIFETIME
+     ═══════════════════════════════════════════ -->
+<section style="background: #f5f3ee; padding: 80px 32px;">
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 32px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="section-label" style="letter-spacing: 5px; font-family: Inter, sans-serif; font-size: 11px; font-weight: 600;">The Moments That Matter</span>
+    </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Gordes Tuesday Market</div>
+    <p class="once-in-a-lifetime__desc">An ochre village on a cliff, lavender honey and fresh chèvre at your fingertips, and 9 of your closest friends wandering the stalls with you.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Fête de la Musique — June 21</div>
+    <p class="once-in-a-lifetime__desc">Free concerts everywhere. Pedestrianized centers, multiple stages in Avignon. No tickets, no plan, just music filling every street.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Lavender fields at peak bloom</div>
+    <p class="once-in-a-lifetime__desc">Late June = peak season. The Sénanque Abbey fields and the plateau de Valensole are the iconic shots. Domaine des Andéols puts you right in it.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Domaine des Andéols</div>
+    <p class="once-in-a-lifetime__desc">A Design Hotels property in a Luberon village. Booked on Marriott Bonvoy points. Lavender at peak bloom. The final chapter before flying home.</p>
+  </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INSIDER TIPS + WHAT TO SKIP
+     ═══════════════════════════════════════════ -->
+<section style="background: #fefcf7; padding: 80px 32px;">
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 32px;">
+
+  <div class="insider-tip-box">
+    <div class="insider-tip-box__label">Insider Tips</div>
+    <ul><li>French autoroutes are toll roads — budget €15-25 per car per direction.</li><li>Fête de la Musique tip: no glass containers, comfortable shoes. Avignon has multiple stages across the old town.</li><li>Luberon market schedule is everything: Sun = L'Isle-sur-la-Sorgue, Tue = GORDES (the unmissable one), Thu = Roussillon.</li><li>Chase Sapphire Reserve provides primary CDW coverage internationally for rentals.</li><li>10 people = book 2 groups of 5 for flights (better availability).</li></ul>
+  </div>
+
+  <div class="skip-box">
+    <div class="skip-box__label">What to Skip</div>
+    <ul><li>Pont du Gard on a Saturday — coach tour chaos. Go early on a weekday or skip entirely.</li><li>Lavender 'museums' and 'experiences' in Sault — overpriced tourist traps. Just drive through the fields.</li><li>Aix-en-Provence Cours Mirabeau restaurants — beautiful street, tourist-priced food. Walk one block north for the real stuff.</li></ul>
+  </div>
+  </div>
+</section>
+
+</body>
+</html>

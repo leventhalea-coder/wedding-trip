@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leila & Ethan — Europe 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --cream: #FEFCF7;
+    --charcoal: #2D2D2D;
+    --warm-gray: #8a857d;
+  }
+
+  html { -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--charcoal);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 32px;
+  }
+
+  .pretitle {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 32px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .accent {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.3);
+    font-style: italic;
+    font-size: clamp(36px, 6vw, 72px);
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  .tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+    margin-top: 24px;
+    margin-bottom: 64px;
+    text-align: center;
+    max-width: 420px;
+  }
+
+  .cities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  .city-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+    min-height: 200px;
+  }
+
+  .city-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .city-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    opacity: 0.9;
+    z-index: 0;
+  }
+
+  .city-card > * { position: relative; z-index: 1; }
+
+  .city-card--barcelona { background: linear-gradient(135deg, #C1440E, #1B6B93); }
+  .city-card--menorca { background: linear-gradient(135deg, #1a6b8a, #2d9bb5); }
+  .city-card--bordeaux { background: linear-gradient(135deg, #722F37, #3d1a1f); }
+  .city-card--provence { background: linear-gradient(135deg, #7B5EA7, #c4a265); }
+
+  .city-dates {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+
+  .city-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .city-sub {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-top: 8px;
+  }
+
+  .footer-note {
+    margin-top: 64px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.15);
+  }
+</style>
+</head>
+<body>
+
+  <div class="pretitle">June 2027</div>
+
+  <h1>
+    Leila & Ethan
+    <span class="accent">Europe</span>
+  </h1>
+
+  <p class="tagline">Four cities. Twenty days. One trip you'll talk about forever.</p>
+
+  <div class="cities">
+    <a href="barcelona.html" class="city-card city-card--barcelona">
+      <div class="city-dates">Jun 8 – 11</div>
+      <div class="city-name">Barcelona</div>
+      <div class="city-sub">HIMSS + Eixample nights</div>
+    </a>
+    <a href="menorca.html" class="city-card city-card--menorca">
+      <div class="city-dates">Jun 11 – 15</div>
+      <div class="city-name">Menorca</div>
+      <div class="city-sub">The decompression</div>
+    </a>
+    <a href="bordeaux.html" class="city-card city-card--bordeaux">
+      <div class="city-dates">Jun 15 – 20</div>
+      <div class="city-name">Bordeaux</div>
+      <div class="city-sub">Wedding week</div>
+    </a>
+    <a href="provence.html" class="city-card city-card--provence">
+      <div class="city-dates">Jun 20 – 26</div>
+      <div class="city-name">Provence</div>
+      <div class="city-sub">Friendmoon + Andéols</div>
+    </a>
+  </div>
+
+  <div class="footer-note">A Wanderlust Concierge production</div>
+
+</body>
+</html>
