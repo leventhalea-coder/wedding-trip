@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bordeaux — A Drinking, Eating & Living Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --burgundy: #722F37;
+  --burgundy-deep: #5A252C;
+  --cream: #FDF8F0;
+  --gold: #C9A84C;
+  --stone: #8B8680;
+  --charcoal: #2D2D2D;
+  --warm-white: #FAF6EE;
+  --burgundy-light: rgba(114,47,55,0.08);
+  --gold-light: rgba(201,168,76,0.12);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ========== NAVIGATION ========== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(253,248,240,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(114,47,55,0.08);
+  padding: 0 2rem;
+  height: 54px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 1.05rem;
+  color: var(--burgundy);
+  letter-spacing: 0.04em;
+}
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a {
+  font-size: 0.7rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--stone); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--burgundy); }
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
+
+/* ========== SECTION NUMBERS ========== */
+.section-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 7rem; font-weight: 400;
+  color: rgba(114,47,55,0.06);
+  line-height: 1; margin-bottom: -1.5rem;
+  position: relative; z-index: 0;
+}
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  background: var(--burgundy);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(253,248,240,0.04) 0%, transparent 50%);
+}
+.hero-eyebrow {
+  font-size: 0.7rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.35em;
+  color: var(--gold); margin-bottom: 2rem;
+  position: relative;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: inline-block;
+  width: 40px; height: 1px; background: var(--gold);
+  vertical-align: middle; margin: 0 1rem; opacity: 0.5;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(5rem, 14vw, 12rem);
+  font-weight: 900; color: var(--cream);
+  line-height: 0.88; letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.hero-subtitle {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 400; font-style: italic;
+  color: rgba(253,248,240,0.7);
+  margin-bottom: 3rem; position: relative;
+  max-width: 600px;
+}
+.hero-tagline {
+  font-size: 0.72rem; font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.3em;
+  color: rgba(253,248,240,0.35);
+  position: relative;
+  max-width: 500px; line-height: 1.8;
+}
+.hero-scroll {
+  position: absolute; bottom: 2.5rem;
+  left: 50%; transform: translateX(-50%);
+  color: rgba(253,248,240,0.25);
+  font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.3em;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0.5rem;
+}
+.hero-scroll span {
+  display: block; width: 1px; height: 30px;
+  background: linear-gradient(to bottom, rgba(253,248,240,0.3), transparent);
+}
+
+/* ========== GENERIC SECTION ========== */
+.section { padding: 6rem 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-label {
+  font-size: 0.65rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800; color: var(--burgundy);
+  line-height: 1.1; margin-bottom: 1rem;
+}
+.section-desc {
+  max-width: 600px; margin: 0 auto;
+  font-size: 0.95rem; color: var(--stone);
+  line-height: 1.8;
+}
+
+/* ========== DIVIDERS ========== */
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin: 1.5rem auto; width: 200px;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--gold); opacity: 0.3;
+}
+.divider-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); opacity: 0.5;
+}
+
+/* ========== QUARTERS (NEIGHBORHOODS) ========== */
+.quarters-bg { background: var(--charcoal); }
+.quarters-bg .section-label { color: var(--gold); }
+.quarters-bg .section-title { color: var(--cream); }
+.quarters-bg .section-desc { color: rgba(253,248,240,0.5); }
+.quarters-bg .section-num { color: rgba(253,248,240,0.04); }
+
+.quarter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.quarter-card {
+  padding: 2.5rem 2rem;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.quarter-card:hover { transform: translateY(-3px); }
+.quarter-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+
+.quarter-card.saint-pierre {
+  background: rgba(114,47,55,0.15);
+}
+.quarter-card.saint-pierre::before { background: var(--burgundy); }
+
+.quarter-card.chartrons {
+  background: rgba(201,168,76,0.12);
+}
+.quarter-card.chartrons::before { background: var(--gold); }
+
+.quarter-card.saint-michel {
+  background: rgba(139,134,128,0.15);
+}
+.quarter-card.saint-michel::before { background: var(--stone); }
+
+.quarter-card.bassins {
+  background: rgba(253,248,240,0.08);
+}
+.quarter-card.bassins::before { background: var(--cream); }
+
+.quarter-card.darwin {
+  background: rgba(76,140,100,0.12);
+}
+.quarter-card.darwin::before { background: #4C8C64; }
+
+.quarter-icon {
+  font-size: 1.8rem; margin-bottom: 1rem; display: block;
+}
+.quarter-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--cream); margin-bottom: 0.3rem;
+}
+.quarter-tagline {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic; font-size: 0.9rem;
+  color: var(--gold); margin-bottom: 1rem;
+  opacity: 0.85;
+}
+.quarter-text {
+  font-size: 0.85rem; line-height: 1.8;
+  color: rgba(253,248,240,0.65);
+}
+.quarter-text strong { color: rgba(253,248,240,0.85); font-weight: 500; }
+
+/* ========== VENUE CARDS ========== */
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+.venue-card {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex; flex-direction: column;
+}
+.venue-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.venue-map {
+  width: 100%; height: 200px;
+  border: 0; display: block;
+  background: #e8e4de;
+}
+.venue-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.venue-tag {
+  font-size: 0.6rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.venue-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--burgundy); margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+.venue-address {
+  font-size: 0.75rem; color: var(--stone);
+  margin-bottom: 0.75rem; letter-spacing: 0.02em;
+}
+.venue-desc {
+  font-size: 0.85rem; color: var(--charcoal);
+  line-height: 1.75; flex: 1;
+}
+.venue-desc em { color: var(--burgundy); font-style: normal; font-weight: 500; }
+
+/* ========== ALTERNATING LARGE CARDS (WINE) ========== */
+.wine-list { display: flex; flex-direction: column; gap: 2.5rem; }
+.wine-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+  min-height: 260px;
+}
+.wine-card:nth-child(even) .wine-card-map { order: 2; }
+.wine-card:nth-child(even) .wine-card-body { order: 1; }
+
+.wine-card-map {
+  width: 100%; height: 100%; min-height: 260px;
+  border: 0; display: block; background: #e8e4de;
+}
+.wine-card-body {
+  padding: 2.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.wine-card-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3rem; color: rgba(114,47,55,0.08);
+  line-height: 1; margin-bottom: 0.25rem;
+}
+.wine-card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--burgundy); margin-bottom: 0.3rem;
+}
+.wine-card-loc {
+  font-size: 0.72rem; color: var(--stone);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.wine-card-desc {
+  font-size: 0.88rem; color: var(--charcoal);
+  line-height: 1.8;
+}
+@media (max-width: 700px) {
+  .wine-card { grid-template-columns: 1fr; }
+  .wine-card:nth-child(even) .wine-card-map { order: 1; }
+  .wine-card:nth-child(even) .wine-card-body { order: 2; }
+  .wine-card-map { min-height: 200px; }
+}
+
+/* ========== COFFEE — HORIZONTAL SCROLL ========== */
+.coffee-scroll {
+  display: flex; gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.coffee-scroll::-webkit-scrollbar { height: 4px; }
+.coffee-scroll::-webkit-scrollbar-track { background: rgba(114,47,55,0.05); border-radius: 2px; }
+.coffee-scroll::-webkit-scrollbar-thumb { background: var(--burgundy); border-radius: 2px; opacity: 0.3; }
+
+.coffee-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+}
+.coffee-map {
+  width: 100%; height: 180px;
+  border: 0; display: block; background: #e8e4de;
+}
+.coffee-body { padding: 1.5rem; }
+.coffee-badge {
+  display: inline-block;
+  font-size: 0.6rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  background: var(--gold-light);
+  color: var(--gold);
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  margin-bottom: 0.6rem;
+}
+.coffee-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--burgundy); margin-bottom: 0.3rem;
+}
+.coffee-loc {
+  font-size: 0.72rem; color: var(--stone); margin-bottom: 0.6rem;
+}
+.coffee-desc {
+  font-size: 0.82rem; color: var(--charcoal); line-height: 1.7;
+}
+
+/* ========== AFTER DARK ========== */
+.dark-bg {
+  background: linear-gradient(170deg, #1a1a1a 0%, var(--charcoal) 100%);
+}
+.dark-bg .section-title { color: var(--cream); }
+.dark-bg .section-desc { color: rgba(253,248,240,0.45); }
+
+.dark-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.dark-card {
+  background: rgba(253,248,240,0.04);
+  border: 1px solid rgba(253,248,240,0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.dark-map {
+  width: 100%; height: 180px;
+  border: 0; display: block; background: #1a1a1a;
+  filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9);
+}
+.dark-body { padding: 1.5rem; }
+.dark-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--cream); margin-bottom: 0.3rem;
+}
+.dark-loc {
+  font-size: 0.7rem; color: var(--gold); margin-bottom: 0.75rem;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.dark-desc {
+  font-size: 0.82rem; color: rgba(253,248,240,0.6); line-height: 1.7;
+}
+
+/* ========== DON'T MISS ========== */
+.miss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.miss-card {
+  background: #fff;
+  border-radius: 6px; overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+}
+.miss-map { width: 100%; height: 200px; border: 0; display: block; background: #e8e4de; }
+.miss-body { padding: 1.5rem; }
+.miss-tag {
+  font-size: 0.6rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--burgundy); margin-bottom: 0.5rem;
+}
+.miss-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--charcoal); margin-bottom: 0.5rem;
+}
+.miss-desc {
+  font-size: 0.85rem; color: var(--stone); line-height: 1.7;
+}
+
+/* ========== INSIDER TIP ========== */
+.insider {
+  background: var(--burgundy);
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+.insider::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+}
+.insider-inner {
+  max-width: 680px; margin: 0 auto;
+  position: relative;
+}
+.insider-label {
+  font-size: 0.65rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.3em;
+  color: var(--gold); margin-bottom: 2rem;
+}
+.insider-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.insider-body {
+  font-size: 0.9rem;
+  color: rgba(253,248,240,0.6);
+  line-height: 1.9;
+}
+.insider-body strong { color: rgba(253,248,240,0.85); font-weight: 500; }
+
+/* ========== FOOTER ========== */
+.footer {
+  background: var(--charcoal);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--cream); margin-bottom: 0.5rem;
+}
+.footer-sub {
+  font-size: 0.72rem; color: var(--stone);
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+.footer-line {
+  width: 40px; height: 1px;
+  background: var(--gold); opacity: 0.3;
+  margin: 1.5rem auto;
+}
+.footer-note {
+  font-size: 0.75rem; color: rgba(253,248,240,0.25);
+  line-height: 1.6;
+}
+
+/* ========== ANIMATION ========== */
+.fade-in {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  .section { padding: 4rem 1.25rem; }
+  .venue-grid { grid-template-columns: 1fr; }
+  .dark-grid { grid-template-columns: 1fr; }
+  .miss-grid { grid-template-columns: 1fr; }
+  .quarter-grid { grid-template-columns: 1fr; }
+  .coffee-card { flex: 0 0 280px; }
+}
+
+  /* ========== EDITORIAL UPGRADES ========== */
+  .the-pick-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .the-pick-badge--warm {
+    background: var(--accent, #722F37);
+    color: #fff;
+  }
+
+  .the-order {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--accent, #722F37);
+    margin-top: 6px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+  }
+
+  .once-in-a-lifetime {
+    position: relative;
+    margin: 60px auto;
+    max-width: 700px;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .once-in-a-lifetime::before {
+    content: '✦';
+    display: block;
+    font-size: 24px;
+    margin-bottom: 20px;
+    opacity: 0.3;
+  }
+  .once-in-a-lifetime__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+  .once-in-a-lifetime__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .once-in-a-lifetime__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .insider-tip-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px 28px;
+    border-left: 3px solid var(--accent, #722F37);
+    background: rgba(0,0,0,0.02);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .insider-tip-box__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+  .insider-tip-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .insider-tip-box li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.8;
+  }
+  .insider-tip-box li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    opacity: 0.4;
+  }
+
+  .skip-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px 28px;
+    border-left: 3px solid rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.015);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .skip-box__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 12px;
+  }
+  .skip-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .skip-box li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.6;
+  }
+  .skip-box li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    opacity: 0.5;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============================== NAV ============================== -->
+<nav class="nav">
+  <div class="nav-brand">Bordeaux</div>
+  <div class="nav-links">
+    <a href="#quarters">Quarters</a>
+    <a href="#eat">Eat</a>
+    <a href="#wine">Wine</a>
+    <a href="#coffee">Coffee</a>
+    <a href="#dark">After Dark</a>
+    <a href="#miss">Don't Miss</a>
+  </div>
+</nav>
+
+<!-- ============================== 1 · HERO ============================== -->
+<section class="hero">
+  <div class="hero-eyebrow">A Drinking, Eating &amp; Living Guide</div>
+  <h1 class="hero-title">Bordeaux</h1>
+  <p class="hero-subtitle">Where the river bends, the wine breathes,<br>and the stone turns gold at dusk</p>
+  <p class="hero-tagline">
+    Where the Garonne curves through 18th-century limestone,
+    Michelin stars hide in medieval alleyways, and the world's greatest
+    wines are poured in neighbourhood bars for the price of a coffee.
+  </p>
+  <div class="hero-scroll">scroll<span></span></div>
+</section>
+
+<!-- ============================== 2 · THE QUARTERS ============================== -->
+<section class="section quarters-bg" id="quarters">
+  <div class="section-inner">
+    <div class="section-num">02</div>
+    <div class="section-header">
+      <div class="section-label">The Quarters</div>
+      <h2 class="section-title">Five Neighborhoods,<br>Five Personalities</h2>
+      <div class="divider"><div class="divider-dot"></div></div>
+      <p class="section-desc">
+        Bordeaux is a city of quarters. Each has its own tempo, its own light,
+        its own way of pouring a glass. Know where you are and you'll know what to order.
+      </p>
+    </div>
+
+    <div class="quarter-grid">
+      <!-- Saint-Pierre -->
+      <div class="quarter-card saint-pierre fade-in">
+        <span class="quarter-icon">🏛️</span>
+        <h3 class="quarter-name">Saint-Pierre</h3>
+        <div class="quarter-tagline">The Medieval Heart</div>
+        <p class="quarter-text">
+          Cobblestoned lanes that twist and narrow until you lose all sense of century.
+          The most atmospheric quarter after dark — candlelit wine bars spilling onto stone,
+          <strong>Le Flacon</strong> pouring funky natural pours, <strong>Soif</strong> curating
+          wines with character. The seafood at <strong>Le Petit Commerce</strong> is an institution.
+          Skip the tourist traps on Place du Parlement; stay on the side streets where the magic lives.
+        </p>
+      </div>
+
+      <!-- Chartrons -->
+      <div class="quarter-card chartrons fade-in">
+        <span class="quarter-icon">🍾</span>
+        <h3 class="quarter-name">Chartrons</h3>
+        <div class="quarter-tagline">The Wine Merchant Quarter</div>
+        <p class="quarter-text">
+          Where the négociants once stored casks for the English market, now antique dealers
+          and wine bars fill the converted warehouses. Walk <strong>Rue Notre-Dame</strong>
+          end to end. Find Hawaiian coffee at <strong>4ᵉ Vague</strong>, Australian-owned wines at
+          <strong>YARRA</strong>, and a 2026-award-winning bistro at <strong>Gabarre</strong>
+          on the octagonal market square. Posh but genuine — the best of both Bordeaux.
+        </p>
+      </div>
+
+      <!-- Saint-Michel -->
+      <div class="quarter-card saint-michel fade-in">
+        <span class="quarter-icon">🕌</span>
+        <h3 class="quarter-name">Saint-Michel</h3>
+        <div class="quarter-tagline">The Bohemian Market Quarter</div>
+        <p class="quarter-text">
+          Gritty, multicultural, the most character of any neighborhood. <strong>Marché
+          des Capucins</strong> is the city's belly — oysters at <strong>Chez Jean-Mi</strong>
+          before noon, brass-accented coffee at <strong>Café Laiton</strong>. <strong>Vins
+          Urbains</strong> pours pét-nat for the adventurous. The Sunday flea market at the
+          base of the spire is the city's best brocante. Rough edges? Sure. But the energy is magnetic.
+        </p>
+      </div>
+
+      <!-- Bassins à Flot -->
+      <div class="quarter-card bassins fade-in">
+        <span class="quarter-icon">⚓</span>
+        <h3 class="quarter-name">Bassins à Flot</h3>
+        <div class="quarter-tagline">Industrial Chic</div>
+        <p class="quarter-text">
+          Former submarine base turned restaurant row. Face the Chaban-Delmas lift bridge
+          from <strong>Dock G6 Rooftop</strong> at sunset. The <strong>Cité du Vin</strong>
+          anchors the district with its decanter silhouette. <strong>UBLO</strong> — the
+          620m² festive boat that replaced the legendary IBOAT — docks here for electronic
+          music and independent culture. Still evolving, always surprising.
+        </p>
+      </div>
+
+      <!-- Darwin -->
+      <div class="quarter-card darwin fade-in">
+        <span class="quarter-icon">🌿</span>
+        <h3 class="quarter-name">Darwin Ecosystem</h3>
+        <div class="quarter-tagline">Right Bank Alternative</div>
+        <p class="quarter-text">
+          A 20,000m² former military barracks reborn as Bordeaux's alternative soul.
+          Indoor skatepark, world-class street art, France's largest organic restaurant
+          at <strong>Magasin Général</strong>. Brunch on the terrace overlooking the
+          half-pipes, then ride north along the Garonne on the Parc aux Angéliques path —
+          the best panorama of the UNESCO skyline is from this bank.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== 3 · WHERE TO EAT ============================== -->
+<section class="section" id="eat">
+  <div class="section-inner">
+    <div class="section-num">03</div>
+    <div class="section-header">
+      <div class="section-label">Where to Eat</div>
+      <h2 class="section-title">Tables Worth<br>Crossing a River For</h2>
+      <div class="divider"><div class="divider-dot"></div></div>
+      <p class="section-desc">
+        From fire-roasted institutions to Michelin-starred whispers,
+        every pin on this map earned its place.
+      </p>
+    </div>
+
+    <div class="venue-grid">
+
+      <!-- 1. La Tupina -->
+      <div class="venue-card fade-in">
+        <iframe class="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8344,-0.5668&z=17&output=embed"
+          title="La Tupina map"></iframe>
+        <div class="venue-body">
+          <div class="venue-tag">Southwest Institution</div>
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — INSTITUTION</div>
+          <h3 class="venue-name">La Tupina</h3>
+          <div class="venue-address">6 Rue Porte de la Monnaie · Saint-Michel</div>
+          <p class="venue-desc">
+            Open-fire cooking, duck fat potatoes, foie gras, and cauldron soups.
+            A farmhouse atmosphere that says <em>"this is France, we're celebrating."</em>
+            The back rooms work for groups of 20–30.
+          </p>
+          <p class="the-order">The order: Foie gras, duck confit, duck fat potatoes. Finish with canelé stuffed with ice cream.</p>
+        </div>
+      </div>
+
+      <!-- 2. Le Chapon Fin -->
+      <div class="venue-card fade-in">
+        <iframe class="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8432,-0.5763&z=17&output=embed"
+          title="Le Chapon Fin map"></iframe>
+        <div class="venue-body">
+          <div class="venue-tag">Belle Époque Legend</div>
+          <h3 class="venue-name">Le Chapon Fin</h3>
+          <div class="venue-address">5 Rue Montesquieu · Triangle d'Or</div>
+          <p class="venue-desc">
+            Open since 1825 with a spectacular grotto interior unlike anything else
+            in France. Monumental rockery, refined service, gourmet cuisine.
+            If you want a meal to feel <em>legendary</em>, this is it.
+          </p>
+          <p class="the-order">The order: The tasting menu in the Belle Époque grotto. Don't rush — the room is the appetizer.</p>
+        </div>
+      </div>
+
+      <!-- 3. Racines -->
+      <div class="venue-card fade-in">
+        <iframe class="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8465,-0.5810&z=17&output=embed"
+          title="Racines map"></iframe>
+        <div class="venue-body">
+          <div class="venue-tag">Bib Gourmand</div>
+          <h3 class="venue-name">Racines by Daniel Gallacher</h3>
+          <div class="venue-address">59 Rue Georges Bonnac</div>
+          <p class="venue-desc">
+            A Scottish chef delivering vibrant, colorful plates that change weekly.
+            Short but smart wine list bridging Bordeaux and Burgundy.
+            Quietly one of the <em>city's best meals</em>.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. Gabarre -->
+      <div class="venue-card fade-in">
+        <iframe class="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8530,-0.5690&z=17&output=embed"
+          title="Gabarre map"></iframe>
+        <div class="venue-body">
+          <div class="venue-tag">2026 Best Newcomer Wine List</div>
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — NEWCOMER</div>
+          <h3 class="venue-name">Gabarre</h3>
+          <div class="venue-address">12 Rue Sicard · Place du Marché des Chartrons</div>
+          <p class="venue-desc">
+            Three friends transformed a cocktail bar into a sleek modern bistro.
+            Prix fixe lunch, natural-leaning wines, terrace facing the
+            <em>octagonal market building</em>. Star Wine List awarded.
+          </p>
+          <p class="the-order">The order: Whatever's seasonal + a glass from their award-winning natural list.</p>
+        </div>
+      </div>
+
+      <!-- 5. Son -->
+      <div class="venue-card fade-in">
+        <iframe class="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8355,-0.5740&z=17&output=embed"
+          title="Son map"></iframe>
+        <div class="venue-body">
+          <div class="venue-tag">Intimate Fine Dining</div>
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — FINE DINING</div>
+          <h3 class="venue-name">Son</h3>
+          <div class="venue-address">14 Rue Paul Louis Lande</div>
+          <p class="venue-desc">
+            Few tables, tasting menus, wine pairings by Chef Sylvain Renzetti.
+            Near the Museum of Aquitaine. The kind of place where <em>every course
+            arrives with a story</em> and you leave changed.
+          </p>
+          <p class="the-order">The order: Tasting menu with wine pairing. Few tables, intimate, exceptional.</p>
+        </div>
+      </div>
+
+      <!-- 6. L'Estacade -->
+      <div class="venue-card fade-in">
+        <iframe class="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8400,-0.5600&z=17&output=embed"
+          title="L'Estacade map"></iframe>
+        <div class="venue-body">
+          <div class="venue-tag">Over the River</div>
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — ROMANTIC</div>
+          <h3 class="venue-name">L'Estacade</h3>
+          <div class="venue-address">Quai des Queyries · Right Bank</div>
+          <p class="venue-desc">
+            On stilts over the Garonne. 360° views of Place de la Bourse.
+            Book a <em>sunset table</em> and watch the city turn gold.
+            Pure romance on water.
+          </p>
+          <p class="the-order">The order: Arrive for aperitif. Stay for sole meunière. Leave after the lights reflect on the Garonne.</p>
+        </div>
+      </div>
+
+      <!-- 7. The Fourth Wall -->
+      <div class="venue-card fade-in">
+        <iframe class="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8435,-0.5745&z=17&output=embed"
+          title="The Fourth Wall map"></iframe>
+        <div class="venue-body">
+          <div class="venue-tag">Grand Théâtre Dining</div>
+          <h3 class="venue-name">The Fourth Wall</h3>
+          <div class="venue-address">2 Place de la Comédie</div>
+          <p class="venue-desc">
+            Philippe Etchebest's brasserie <em>inside the opera house</em>.
+            Soaring vaults, modern French classics, and the theatrical weight of
+            an 18th-century masterpiece around every course.
+          </p>
+          <p class="the-order">The order: Etchebest's brasserie classics under the Grand Théâtre's soaring vaults.</p>
+        </div>
+      </div>
+
+      <!-- 8. Le Petit Commerce -->
+      <div class="venue-card fade-in">
+        <iframe class="venue-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8387,-0.5710&z=17&output=embed"
+          title="Le Petit Commerce map"></iframe>
+        <div class="venue-body">
+          <div class="venue-tag">Seafood Classic</div>
+          <h3 class="venue-name">Le Petit Commerce</h3>
+          <div class="venue-address">22 Rue du Parlement Saint-Pierre</div>
+          <p class="venue-desc">
+            The Saint-Pierre seafood institution. Outdoor tables spilling across a
+            pedestrian street. Wild fish from Arcachon, oysters from Médoc and
+            <em>Cap Ferret</em>. Reliably, perfectly Bordeaux.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /venue-grid -->
+  </div>
+</section>
+
+<!-- ============================== 4 · THE WINE TRAIL ============================== -->
+<section class="section" id="wine" style="background:var(--warm-white);">
+  <div class="section-inner">
+    <div class="section-num">04</div>
+    <div class="section-header">
+      <div class="section-label">The Wine Trail</div>
+      <h2 class="section-title">Six Glasses That<br>Tell the Whole Story</h2>
+      <div class="divider"><div class="divider-dot"></div></div>
+      <p class="section-desc">
+        From the subsidized pours at the wine council to punk natural bars
+        and First Growth temples — the full spectrum in one city.
+      </p>
+    </div>
+
+    <div class="wine-list">
+
+      <!-- 1. Bar à Vin du CIVB -->
+      <div class="wine-card fade-in">
+        <iframe class="wine-card-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8436,-0.5755&z=17&output=embed"
+          title="Bar à Vin du CIVB map"></iframe>
+        <div class="wine-card-body">
+          <div class="wine-card-num">01</div>
+          <h3 class="wine-card-name">Bar à Vin du CIVB</h3>
+          <div class="wine-card-loc">3 Cours du 30 Juillet · Opposite the Grand Théâtre</div>
+          <p class="wine-card-desc">
+            The Bordeaux wine council's own bar. Glasses from €2–8 across every appellation —
+            subsidized because they want you to explore. Sommelier guidance, spacious, elegant.
+            Arrive 14:00–17:00 to avoid crowds. Skip the food, focus on the wine.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Soif -->
+      <div class="wine-card fade-in">
+        <iframe class="wine-card-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8355,-0.5695&z=17&output=embed"
+          title="Soif map"></iframe>
+        <div class="wine-card-body">
+          <div class="wine-card-num">02</div>
+          <h3 class="wine-card-name">Soif</h3>
+          <div class="wine-card-loc">35 Rue du Cancera · Saint-Pierre</div>
+          <p class="wine-card-desc">
+            Don't let the natural wine label fool you — this is a broad, beautifully curated
+            list of characterful wines from producers who care deeply. Simple food that pairs
+            perfectly. One of the city's best wine bar experiences, full stop.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. Le Flacon -->
+      <div class="wine-card fade-in">
+        <iframe class="wine-card-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8390,-0.5718&z=17&output=embed"
+          title="Le Flacon map"></iframe>
+        <div class="wine-card-body">
+          <div class="wine-card-num">03</div>
+          <h3 class="wine-card-name">Le Flacon</h3>
+          <div class="wine-card-loc">Rue de la Devise · Saint-Pierre</div>
+          <p class="wine-card-desc">
+            Pioneer of Bordeaux's natural wine scene. Funky, cloudy pours from small
+            producers — Jura, Loire, and local rebels. Narrow streets, candlelit ambiance.
+            Exactly where you want to end up on a warm evening.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. YARRA -->
+      <div class="wine-card fade-in">
+        <iframe class="wine-card-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8523,-0.5698&z=17&output=embed"
+          title="YARRA map"></iframe>
+        <div class="wine-card-body">
+          <div class="wine-card-num">04</div>
+          <h3 class="wine-card-name">YARRA</h3>
+          <div class="wine-card-loc">18 Rue Notre-Dame · Chartrons</div>
+          <p class="wine-card-desc">
+            Australian-owned wine bar named after the Yarra Valley. Pick a bottle from
+            the wall or ask Aaron — his French is flawless, his taste impeccable.
+            Charming backyard in summer. Personality-forward wines you won't find anywhere else.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5. Vins Urbains -->
+      <div class="wine-card fade-in">
+        <iframe class="wine-card-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8340,-0.5725&z=17&output=embed"
+          title="Vins Urbains map"></iframe>
+        <div class="wine-card-body">
+          <div class="wine-card-num">05</div>
+          <h3 class="wine-card-name">Vins Urbains</h3>
+          <div class="wine-card-loc">23 Rue Élie Gintrac · Saint-Michel</div>
+          <p class="wine-card-desc">
+            Young, loud, and joyful — the opposite of a stuffy tasting room. Pét-nat,
+            skin-contact, orange wines near the market. The staff will passionately guide you
+            (and maybe lecture you if you ask for oaky Cab).
+          </p>
+        </div>
+      </div>
+
+      <!-- 6. Les Trois Pinardiers -->
+      <div class="wine-card fade-in">
+        <iframe class="wine-card-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8430,-0.5800&z=17&output=embed"
+          title="Les Trois Pinardiers map"></iframe>
+        <div class="wine-card-body">
+          <div class="wine-card-num">06</div>
+          <h3 class="wine-card-name">Les Trois Pinardiers</h3>
+          <div class="wine-card-loc">Near Place Gambetta</div>
+          <p class="wine-card-desc">
+            The local hidden gem. Founded by friends who blind-test every single bottle
+            before it earns a place on the list. No pretension, just rigorous taste
+            and the kind of warmth that makes you feel like a regular on night one.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /wine-list -->
+  </div>
+</section>
+
+<!-- ============================== 5 · THE COFFEE TRAIL ============================== -->
+<section class="section" id="coffee">
+  <div class="section-inner">
+    <div class="section-num">05</div>
+    <div class="section-header">
+      <div class="section-label">The Coffee Trail</div>
+      <h2 class="section-title">Specialty Pours,<br>No Wi-Fi Required</h2>
+      <div class="divider"><div class="divider-dot"></div></div>
+      <p class="section-desc">
+        Bordeaux's specialty coffee scene exploded in 2026. A WhatsApp group of 170+
+        local coffee professionals now drives the community. These are the best cups in the city.
+      </p>
+    </div>
+
+    <div class="coffee-scroll">
+
+      <!-- 1. Moko Coffee -->
+      <div class="coffee-card fade-in">
+        <iframe class="coffee-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8420,-0.5795&z=17&output=embed"
+          title="Moko Coffee map"></iframe>
+        <div class="coffee-body">
+          <span class="coffee-badge">🏆 Best in France 2026</span>
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — COFFEE</div>
+          <h3 class="coffee-name">Moko Coffee</h3>
+          <div class="coffee-loc">20 Rue Castelnau d'Auros · Near Gambetta</div>
+          <p class="coffee-desc">
+            Crowned Best Coffee Shop in France at the Paris Coffee Show.
+            KB Roasters beans, retro NYC décor, house-made pastries that
+            alone justify the visit.
+          </p>
+          <p class="the-order">The order: Flat white + whatever pastry's fresh. Everything is house-made.</p>
+        </div>
+      </div>
+
+      <!-- 2. Café Piha -->
+      <div class="coffee-card fade-in">
+        <iframe class="coffee-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8365,-0.5750&z=17&output=embed"
+          title="Café Piha map"></iframe>
+        <div class="coffee-body">
+          <span class="coffee-badge">The Institution</span>
+          <h3 class="coffee-name">Café Piha</h3>
+          <div class="coffee-loc">69 Rue des Ayres</div>
+          <p class="coffee-desc">
+            No wifi, no tech — just be present. Three roast ranges from Bio
+            to Nano Lot. Best people-watching terrace in the city. Supplies
+            beans to half of Bordeaux.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. Black List Café -->
+      <div class="coffee-card fade-in">
+        <iframe class="coffee-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8374,-0.5764&z=17&output=embed"
+          title="Black List Café map"></iframe>
+        <div class="coffee-body">
+          <span class="coffee-badge">Tiny &amp; Legendary</span>
+          <h3 class="coffee-name">Black List Café</h3>
+          <div class="coffee-loc">27 Place Pey Berland</div>
+          <p class="coffee-desc">
+            Oldest specialty café in Bordeaux. 15 seats, open 7 days
+            (rare!), yellow stools as your landmark. Oven Heaven + 3fe beans.
+            Best eggs Benedict in town.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. L'Alchimiste -->
+      <div class="coffee-card fade-in">
+        <iframe class="coffee-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8505,-0.5690&z=17&output=embed"
+          title="L'Alchimiste map"></iframe>
+        <div class="coffee-body">
+          <span class="coffee-badge">The City's Roaster</span>
+          <h3 class="coffee-name">L'Alchimiste</h3>
+          <div class="coffee-loc">31 Rue du Cancera · Chartrons</div>
+          <p class="coffee-desc">
+            Bordeaux's own roaster, ranked 37th best coffee shop in Europe.
+            Three locations now — including a new Saint-Pierre spot
+            opened May 2026.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5. 4ᵉ Vague Café -->
+      <div class="coffee-card fade-in">
+        <iframe class="coffee-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8525,-0.5695&z=17&output=embed"
+          title="4ᵉ Vague Café map"></iframe>
+        <div class="coffee-body">
+          <span class="coffee-badge">Hawaiian Only</span>
+          <h3 class="coffee-name">4ᵉ Vague Café</h3>
+          <div class="coffee-loc">Rue Notre-Dame · Chartrons</div>
+          <p class="coffee-desc">
+            Hawaiian specialty coffee — Kona, Ka'u, and Maui beans.
+            Literally the only place in France doing this. Banker-turned-barista
+            Damien's surf-inspired hideaway.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /coffee-scroll -->
+  </div>
+</section>
+
+<!-- ============================== 6 · AFTER DARK ============================== -->
+<section class="section dark-bg" id="dark">
+  <div class="section-inner">
+    <div class="section-num" style="color:rgba(253,248,240,0.03);">06</div>
+    <div class="section-header">
+      <div class="section-label" style="color:var(--gold);">After Dark</div>
+      <h2 class="section-title">When the<br>Streetlights Take Over</h2>
+      <div class="divider"><div class="divider-dot"></div></div>
+      <p class="section-desc">
+        Speakeasy back rooms, rooftop sunsets over the basins,
+        and a 620-square-meter boat pulsing with electronic music.
+      </p>
+    </div>
+
+    <div class="dark-grid">
+
+      <!-- 1. Symbiose -->
+      <div class="dark-card fade-in">
+        <iframe class="dark-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8518,-0.5714&z=17&output=embed"
+          title="Symbiose map"></iframe>
+        <div class="dark-body">
+          <h3 class="dark-name">Symbiose</h3>
+          <div class="dark-loc">4 Quai des Chartrons</div>
+          <p class="dark-desc">
+            Warm interior, creative local cuisine, and a <em style="color:var(--gold);font-style:normal;">hidden
+            speakeasy in back</em>. Excellent cocktails. Start with dinner on the quay,
+            end in the secret room.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Dock G6 Rooftop -->
+      <div class="dark-card fade-in">
+        <iframe class="dark-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8620,-0.5580&z=17&output=embed"
+          title="Dock G6 Rooftop map"></iframe>
+        <div class="dark-body">
+          <h3 class="dark-name">Dock G6 Rooftop</h3>
+          <div class="dark-loc">Bassins à Flot · Radisson Blu</div>
+          <p class="dark-desc">
+            Panoramic views over the basins. Great for sunset drinks. Watch the
+            Chaban-Delmas lift bridge glow against the twilight with something
+            cold in hand.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. UBLO -->
+      <div class="dark-card fade-in">
+        <iframe class="dark-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8615,-0.5575&z=17&output=embed"
+          title="UBLO map"></iframe>
+        <div class="dark-body">
+          <h3 class="dark-name">UBLO</h3>
+          <div class="dark-loc">Bassins à Flot · On the Water</div>
+          <p class="dark-desc">
+            The 620m² festive boat that replaced the legendary IBOAT, reopened
+            late 2026. Electronic music, independent culture, docked at the basin.
+            For nights that don't end until the sun does.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /dark-grid -->
+  </div>
+</section>
+
+<!-- ============================== 7 · DON'T MISS ============================== -->
+<section class="section" id="miss">
+  <div class="section-inner">
+    <div class="section-num">07</div>
+    <div class="section-header">
+      <div class="section-label">Don't Miss</div>
+      <h2 class="section-title">The Culture Picks</h2>
+      <div class="divider"><div class="divider-dot"></div></div>
+      <p class="section-desc">
+        The landmarks and rituals that turn a trip into a memory.
+      </p>
+    </div>
+
+    <div class="miss-grid">
+
+      <!-- 1. La Cité du Vin -->
+      <div class="miss-card fade-in">
+        <iframe class="miss-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8625,-0.5508&z=16&output=embed"
+          title="La Cité du Vin map"></iframe>
+        <div class="miss-body">
+          <div class="miss-tag">Museum · Wine</div>
+          <h3 class="miss-name">La Cité du Vin</h3>
+          <p class="miss-desc">
+            A decanter-shaped building with an immersive sensory journey through
+            wine history. The Belvedere on the top floor offers a complimentary
+            tasting glass with panoramic city views. Allow 2–3 hours.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Marché des Capucins -->
+      <div class="miss-card fade-in">
+        <iframe class="miss-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8330,-0.5722&z=17&output=embed"
+          title="Marché des Capucins map"></iframe>
+        <div class="miss-body">
+          <div class="miss-tag">Market · Morning Ritual</div>
+          <h3 class="miss-name">Marché des Capucins</h3>
+          <p class="miss-desc">
+            "The Belly of Bordeaux." Eighty vendors, Tuesday through Sunday.
+            Oysters at Chez Jean-Mi, coffee at Café Laiton, fresh produce,
+            charcuterie, cheese, and the best Saturday morning in the city.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. Cassonade -->
+      <div class="miss-card fade-in">
+        <iframe class="miss-map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=44.8353,-0.5722&z=17&output=embed"
+          title="Cassonade map"></iframe>
+        <div class="miss-body">
+          <div class="miss-tag">Pastry · Icon</div>
+          <h3 class="miss-name">Cassonade</h3>
+          <p class="miss-desc">
+            The reigning champion of Bordeaux's definitive pastry — the canelé.
+            Under the Grosse Cloche. Blackened exterior forged in 250°C copper
+            molds, custardy rum-vanilla interior. Also offers vegan canelés.
+            Eat them warm.
+          </p>
+          <p class="the-order">The order: Two canelés. Eat them warm. Buy four more for later.</p>
+        </div>
+      </div>
+
+    </div><!-- /miss-grid -->
+  </div>
+</section>
+
+<!-- ============================== 8 · THE INSIDER TIP ============================== -->
+<section class="insider">
+  <div class="insider-inner fade-in">
+    <div class="insider-label">§ 08 · The Insider Tip</div>
+    <blockquote class="insider-quote">
+      "Don't plan every meal. Bordeaux rewards the wanderer.
+      Leave one evening completely unscheduled — walk the quays
+      at golden hour, follow a side street in Saint-Pierre,
+      sit at the first bar that has an open seat outside,
+      and order whatever the person next to you is drinking."
+    </blockquote>
+    <div class="divider" style="margin:2rem auto;">
+      <div class="divider-dot" style="background:rgba(253,248,240,0.3);"></div>
+    </div>
+    <p class="insider-body">
+      The best glass of wine you'll have in Bordeaux won't be from a First Growth.
+      It'll be a <strong>€4 Côtes de Bourg</strong> poured by a bartender who just discovered
+      it last week. It'll be warm outside, the stone will still hold the sun,
+      and you'll think: <strong><em style="color:var(--gold);">this is exactly where I'm supposed to be.</em></strong>
+    </p>
+  </div>
+</section>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="footer-brand">Bordeaux</div>
+  <div class="footer-sub">A Drinking, Eating &amp; Living Guide</div>
+  <div class="footer-line"></div>
+  <p class="footer-note">
+    Zero stock photos. Zero external images. Pure typography &amp; maps.<br>
+    Every pin verified. Every glass earned.
+  </p>
+</footer>
+
+<!-- ============================== SCRIPTS ============================== -->
+<script>
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Nav hide on scroll down, show on scroll up
+let lastScroll = 0;
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 300 && currentScroll > lastScroll) {
+    nav.style.transform = 'translateY(-100%)';
+  } else {
+    nav.style.transform = 'translateY(0)';
+  }
+  lastScroll = currentScroll;
+}, { passive: true });
+</script>
+
+
+<!-- ═══════════════════════════════════════════
+     ONCE IN A LIFETIME
+     ═══════════════════════════════════════════ -->
+<section style="background: #f5f0e8; padding: 80px 32px;">
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 32px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="section-label" style="letter-spacing: 5px;">The Moments That Matter</span>
+    </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Getting married at Château Gassies</div>
+    <p class="once-in-a-lifetime__desc">An 18th-century estate, 14 hectares, the Garonne below. You came back to where you got engaged. Now you're getting married.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Le Chapon Fin</div>
+    <p class="once-in-a-lifetime__desc">Open since 1825. The Belle Époque grotto interior — monumental rockery, gourmet cuisine — is unlike anything else in France.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Sunset on L'Estacade</div>
+    <p class="once-in-a-lifetime__desc">Dinner on stilts over the Garonne with Place de la Bourse lit up in reflection. The kind of night you designed your life around.</p>
+  </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INSIDER TIPS + WHAT TO SKIP
+     ═══════════════════════════════════════════ -->
+<section style="background: #fefcf7; padding: 80px 32px;">
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 32px;">
+
+  <div class="insider-tip-box">
+    <div class="insider-tip-box__label">Insider Tips</div>
+    <ul><li>Skip the food at Bar à Vin du CIVB. The wine is excellent; the food is an afterthought.</li><li>Canelé from silicone molds = imposter. Real ones are forged in copper at 250°C. The blackened exterior is the badge of honor.</li><li>Marché des Capucins on Saturday morning: oysters at Chez Jean-Mi, coffee at Café Laiton. This is how locals start the weekend.</li><li>Miroir d'Eau is best at night. Walk the quays after dinner.</li></ul>
+  </div>
+
+  <div class="skip-box">
+    <div class="skip-box__label">What to Skip</div>
+    <ul><li>Rue Saint-Rémi tourist restaurants with sidewalk touts — walk two blocks in any direction for real food.</li><li>Cité du Vin permanent exhibition if you're short on time — just do the Belvedere tasting glass at the top for the view and a pour.</li><li>Saint-Émilion on a weekend in June — coach tours make it unbearable. Go Tuesday or Wednesday if at all.</li></ul>
+  </div>
+  </div>
+</section>
+
+</body>
+</html>

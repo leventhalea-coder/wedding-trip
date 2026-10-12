@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menorca — The Decompression</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  /* ========== RESET & BASE ========== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --ocean: #1B6B93;
+    --ocean-deep: #134d6a;
+    --sand: #FAF7F2;
+    --gold: #E8B84B;
+    --seafoam: #D4E8E0;
+    --charcoal: #2D2D2D;
+    --charcoal-light: #4A4A4A;
+    --warm-gray: #8A8278;
+    --rule: rgba(45,45,45,0.12);
+    --rule-light: rgba(255,255,255,0.15);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+  
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--sand);
+    color: var(--charcoal);
+    line-height: 1.7;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ========== TYPOGRAPHY ========== */
+  .serif { font-family: 'DM Serif Display', 'Georgia', serif; }
+  .display { font-family: 'Playfair Display', 'Georgia', serif; }
+  
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2px;
+    margin-top: 0.6rem;
+  }
+
+  .section-label--dark::after { background: var(--charcoal); }
+  .section-label--light::after { background: rgba(255,255,255,0.5); }
+  .section-label--gold::after { background: var(--gold); }
+
+  h2.section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+
+  .lead-text {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--charcoal-light);
+    max-width: 640px;
+    font-weight: 300;
+  }
+
+  /* ========== LAYOUT ========== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .container--narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+  }
+
+  section { padding: clamp(4rem, 8vw, 8rem) 0; }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    background: var(--ocean);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0;
+  }
+
+  .hero::before {
+    content: 'MENORCA';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(8rem, 22vw, 20rem);
+    color: rgba(255,255,255,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(2rem, 5vw, 4rem);
+  }
+
+  .hero-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(5rem, 14vw, 11rem);
+    line-height: 0.88;
+    color: #fff;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title span {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.35em;
+    letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2.5rem 0;
+  }
+
+  .hero-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.7);
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .hero-meta-item strong {
+    display: block;
+    font-size: 1rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    margin-top: 0.3rem;
+  }
+
+  /* ========== EDITORIAL INTRO ========== */
+  .editorial-intro {
+    background: var(--sand);
+    padding: clamp(5rem, 10vw, 10rem) 0;
+  }
+
+  .editorial-intro .pull-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.35;
+    color: var(--ocean);
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .editorial-intro .pull-quote em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ========== BEACHES ========== */
+  .beaches-section {
+    background: var(--sand);
+    padding-bottom: 2rem;
+  }
+
+  .beaches-header {
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .beach-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 1px;
+    min-height: 420px;
+    background: #fff;
+  }
+
+  .beach-card:nth-child(even) { direction: rtl; }
+  .beach-card:nth-child(even) > * { direction: ltr; }
+
+  .beach-card__info {
+    padding: clamp(2rem, 4vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .beach-card__number {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: rgba(27,107,147,0.08);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .beach-card__name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+    color: var(--charcoal);
+  }
+
+  .beach-card__tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ocean);
+    margin-bottom: 1.2rem;
+  }
+
+  .beach-card__desc {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--charcoal-light);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .beach-card__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .beach-card__tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 2px;
+    background: var(--seafoam);
+    color: var(--ocean-deep);
+  }
+
+  .beach-card__tag--gold {
+    background: rgba(232,184,75,0.15);
+    color: #9a7020;
+  }
+
+  .beach-card__map {
+    position: relative;
+    min-height: 350px;
+    background: var(--seafoam);
+  }
+
+  .beach-card__map iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ========== PULL QUOTE INTERSTITIAL ========== */
+  .interstitial {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    text-align: center;
+  }
+
+  .interstitial--ocean { background: var(--ocean); color: #fff; }
+  .interstitial--gold { background: var(--gold); color: var(--charcoal); }
+  .interstitial--seafoam { background: var(--seafoam); color: var(--charcoal); }
+  .interstitial--charcoal { background: var(--charcoal); color: #fff; }
+
+  .interstitial__quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    line-height: 1.4;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .interstitial__attr {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    opacity: 0.5;
+  }
+
+  /* ========== HOTELS ========== */
+  .hotels-section {
+    background: #fff;
+  }
+
+  .hotel-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+    min-height: 400px;
+  }
+
+  .hotel-card:nth-child(odd) .hotel-card__map { order: -1; }
+
+  .hotel-card__info {
+    padding: clamp(2.5rem, 4vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hotel-card__rank {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .hotel-card__name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+
+  .hotel-card__tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ocean);
+    margin-bottom: 1.2rem;
+  }
+
+  .hotel-card__desc {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--charcoal-light);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .hotel-card__price {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--warm-gray);
+  }
+
+  .hotel-card__map {
+    position: relative;
+    min-height: 350px;
+    background: var(--seafoam);
+  }
+
+  .hotel-card__map iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ========== DINING ========== */
+  .dining-section {
+    background: var(--sand);
+  }
+
+  .dining-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    margin-top: clamp(2rem, 4vw, 4rem);
+  }
+
+  .dining-card {
+    background: #fff;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dining-card--featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+  }
+
+  .dining-card--featured .dining-card__info {
+    padding: clamp(2rem, 4vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .dining-card__type {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 0.6rem;
+  }
+
+  .dining-card__name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  .dining-card--featured .dining-card__name {
+    font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+  }
+
+  .dining-card__sub {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ocean);
+    margin-bottom: 1rem;
+  }
+
+  .dining-card__desc {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--charcoal-light);
+    font-weight: 300;
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+
+  .dining-card__map {
+    position: relative;
+    min-height: 200px;
+    background: var(--seafoam);
+    margin-top: auto;
+  }
+
+  .dining-card--featured .dining-card__map {
+    min-height: 100%;
+  }
+
+  .dining-card__map iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .dining-card__location {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--warm-gray);
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  /* ========== COFFEE ========== */
+  .coffee-section {
+    background: var(--charcoal);
+    color: #fff;
+  }
+
+  .coffee-section .section-label { color: var(--gold); }
+  .coffee-section h2 { color: #fff; }
+
+  .coffee-section .lead-text {
+    color: rgba(255,255,255,0.6);
+  }
+
+  .coffee-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    margin-top: clamp(2rem, 4vw, 4rem);
+  }
+
+  .coffee-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .coffee-card__town {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .coffee-card__name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .coffee-card__tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: var(--seafoam);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .coffee-card__desc {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .coffee-card__map {
+    position: relative;
+    height: 180px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .coffee-card__map iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .coffee-note {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding: 2rem;
+    border-left: 3px solid var(--gold);
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .coffee-extras {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .coffee-extra {
+    padding: 1.2rem;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .coffee-extra__name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .coffee-extra__desc {
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+  }
+
+  /* ========== GOLDEN HOUR ========== */
+  .golden-section {
+    background: var(--sand);
+    position: relative;
+  }
+
+  .golden-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(180deg, rgba(232,184,75,0.08) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .golden-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    margin-top: clamp(2rem, 4vw, 4rem);
+  }
+
+  .golden-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    background: #fff;
+    min-height: 350px;
+  }
+
+  .golden-card:nth-child(even) {
+    grid-template-columns: 1fr 1.2fr;
+  }
+
+  .golden-card:nth-child(even) .golden-card__map { order: -1; }
+
+  .golden-card__info {
+    padding: clamp(2rem, 4vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .golden-card__icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .golden-card__name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  .golden-card__tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .golden-card__desc {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--charcoal-light);
+    font-weight: 300;
+  }
+
+  .golden-card__map {
+    position: relative;
+    min-height: 300px;
+    background: var(--seafoam);
+  }
+
+  .golden-card__map iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ========== INSIDER TIP ========== */
+  .insider-section {
+    background: var(--ocean);
+    color: #fff;
+    text-align: center;
+    padding: clamp(5rem, 10vw, 10rem) 0;
+  }
+
+  .insider-number {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 8vw, 7rem);
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .insider-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .insider-body {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+  }
+
+  .insider-body strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .insider-pomada {
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: inline-block;
+    max-width: 500px;
+  }
+
+  .insider-pomada__title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: var(--gold);
+  }
+
+  .insider-pomada__desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .footer span { color: var(--gold); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .beach-card,
+    .beach-card:nth-child(even),
+    .hotel-card,
+    .dining-card--featured,
+    .golden-card,
+    .golden-card:nth-child(even) {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .beach-card:nth-child(even) > * { direction: ltr; }
+
+    .beach-card__map,
+    .hotel-card__map,
+    .dining-card--featured .dining-card__map,
+    .golden-card__map {
+      min-height: 280px;
+      order: 0 !important;
+    }
+
+    .hotel-card:nth-child(odd) .hotel-card__map { order: 0; }
+    .golden-card:nth-child(even) .golden-card__map { order: 0 !important; }
+
+    .dining-grid { grid-template-columns: 1fr; }
+    .coffee-grid { grid-template-columns: 1fr; }
+    .coffee-extras { grid-template-columns: 1fr; }
+    
+    .hero-title {
+      font-size: clamp(3.5rem, 12vw, 7rem);
+    }
+  }
+
+  /* ========== ANIMATIONS ========== */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========== NAV ========== */
+  .mag-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(27,107,147,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0 2rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .mag-nav.visible { transform: translateY(0); }
+
+  .mag-nav__brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: 0.08em;
+  }
+
+  .mag-nav__links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .mag-nav__links a {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .mag-nav__links a:hover { color: var(--gold); }
+
+  @media (max-width: 700px) {
+    .mag-nav__links { display: none; }
+  }
+
+  /* ========== EDITORIAL UPGRADES ========== */
+  .the-pick-badge {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .the-pick-badge--warm {
+    background: var(--accent, #1a6b8a);
+    color: #fff;
+  }
+
+  .the-order {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--accent, #1a6b8a);
+    margin-top: 6px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+  }
+
+  .once-in-a-lifetime {
+    position: relative;
+    margin: 60px auto;
+    max-width: 700px;
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .once-in-a-lifetime::before {
+    content: '✦';
+    display: block;
+    font-size: 24px;
+    margin-bottom: 20px;
+    opacity: 0.3;
+  }
+  .once-in-a-lifetime__label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+  .once-in-a-lifetime__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .once-in-a-lifetime__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .insider-tip-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px 28px;
+    border-left: 3px solid var(--accent, #1a6b8a);
+    background: rgba(0,0,0,0.02);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .insider-tip-box__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+  .insider-tip-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .insider-tip-box li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.8;
+  }
+  .insider-tip-box li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    opacity: 0.4;
+  }
+
+  .skip-box {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px 28px;
+    border-left: 3px solid rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.015);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .skip-box__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 12px;
+  }
+  .skip-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .skip-box li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    opacity: 0.6;
+  }
+  .skip-box li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    opacity: 0.5;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ====== NAV ====== -->
+<nav class="mag-nav" id="mainNav">
+  <div class="mag-nav__brand">MENORCA</div>
+  <ul class="mag-nav__links">
+    <li><a href="#beaches">Beaches</a></li>
+    <li><a href="#stay">Stay</a></li>
+    <li><a href="#eat">Eat</a></li>
+    <li><a href="#coffee">Coffee</a></li>
+    <li><a href="#golden">Sunset</a></li>
+  </ul>
+</nav>
+
+<!-- ====== HERO ====== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">A Travel Guide · June 2027</div>
+    <h1 class="hero-title">
+      Menorca
+      <span>The Decompression</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-intro">
+      Not Ibiza. Not Mallorca. A UNESCO Biosphere Reserve where fishing boats still 
+      deliver to restaurant kitchens, where the beaches are Caribbean-turquoise but 
+      the pace is Mediterranean-slow, and where the biggest decision of the day is 
+      which cala to discover.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        Season
+        <strong>June · Pre-Peak</strong>
+      </div>
+      <div class="hero-meta-item">
+        Duration
+        <strong>4–5 Days</strong>
+      </div>
+      <div class="hero-meta-item">
+        Character
+        <strong>Beaches · Lobster · Slow</strong>
+      </div>
+      <div class="hero-meta-item">
+        Water
+        <strong>20–24°C · Crystal</strong>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ====== EDITORIAL INTRO ====== -->
+<div class="editorial-intro">
+  <p class="pull-quote fade-in">
+    "The island is 47 kilometers long. You can drive end to end in forty-five minutes. 
+    But you won't — because every cove you pass will make you <em>pull over, 
+    climb down, and swim.</em>"
+  </p>
+</div>
+
+
+<!-- ====== BEACHES ====== -->
+<section class="beaches-section" id="beaches">
+  <div class="container">
+    <div class="beaches-header fade-in">
+      <div class="section-label section-label--dark">01 · The Calas</div>
+      <h2 class="section-title">The Beaches</h2>
+      <p class="lead-text">
+        Menorca has over a hundred beaches and coves. The south coast delivers postcard 
+        turquoise and white sand; the north is wilder, redder, less crowded. These are 
+        the seven that matter most — with satellite views so you can see exactly what 
+        you're walking into.
+      </p>
+    </div>
+  </div>
+
+  <!-- Beach 1: Cala Mitjana -->
+  <div class="beach-card fade-in">
+    <div class="beach-card__info">
+      <div class="beach-card__number">01</div>
+      <div class="the-pick-badge the-pick-badge--warm">THE PICK — BEACH</div>
+          <h3 class="beach-card__name">Cala Mitjana</h3>
+      <div class="beach-card__tagline">Best All-Rounder</div>
+      <p class="beach-card__desc">
+        The jewel. A sheltered cove framed by pine-covered cliffs with impossibly clear water. 
+        Ten-minute walk through fragrant pines from the car park. Her tiny sister, 
+        Cala Mitjaneta, hides around the rocks — even more secluded.
+      </p>
+      <div class="beach-card__details">
+        <span class="beach-card__tag">15 min from Torralbenc</span>
+        <span class="beach-card__tag">Excellent Snorkeling</span>
+        <span class="beach-card__tag--gold beach-card__tag">No Facilities</span>
+      </div>
+    </div>
+    <div class="beach-card__map">
+      <iframe src="https://www.google.com/maps?q=39.9355,3.9471&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Beach 2: Cala Macarella -->
+  <div class="beach-card fade-in">
+    <div class="beach-card__info">
+      <div class="beach-card__number">02</div>
+      <h3 class="beach-card__name">Cala Macarella & Macarelleta</h3>
+      <div class="beach-card__tagline">The Icons</div>
+      <p class="beach-card__desc">
+        Menorca's most famous beaches — and earned. Macarella is a half-moon of sugar-white 
+        sand sloping into gin-clear water, backed by dramatic cliffs. Macarelleta, a short 
+        scramble around the rocks, is smaller, wilder, and often clothing-optional. 
+        Go early morning to beat the crowds.
+      </p>
+      <div class="beach-card__details">
+        <span class="beach-card__tag">20 min + 15 min walk</span>
+        <span class="beach-card__tag">Very Good Snorkeling</span>
+        <span class="beach-card__tag">Small Beach Bar</span>
+      </div>
+    </div>
+    <div class="beach-card__map">
+      <iframe src="https://www.google.com/maps?q=39.9343,3.8958&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Beach 3: Cala Turqueta -->
+  <div class="beach-card fade-in">
+    <div class="beach-card__info">
+      <div class="beach-card__number">03</div>
+      <h3 class="beach-card__name">Cala Turqueta</h3>
+      <div class="beach-card__tagline">The Quieter Stunner</div>
+      <p class="beach-card__desc">
+        Like Macarella's less-discovered cousin. Pine forest, white sand, transparent water. 
+        The name says it all — turquoise. Quieter than its famous neighbor, especially in 
+        June before the August crush arrives.
+      </p>
+      <div class="beach-card__details">
+        <span class="beach-card__tag">25 min + 15 min walk</span>
+        <span class="beach-card__tag">Good Snorkeling</span>
+        <span class="beach-card__tag--gold beach-card__tag">No Facilities</span>
+      </div>
+    </div>
+    <div class="beach-card__map">
+      <iframe src="https://www.google.com/maps?q=39.9323,3.8720&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Beach 4: Cala Pregonda -->
+  <div class="beach-card fade-in">
+    <div class="beach-card__info">
+      <div class="beach-card__number">04</div>
+      <div class="the-pick-badge the-pick-badge--warm">THE PICK — WILD BEACH</div>
+          <h3 class="beach-card__name">Cala Pregonda</h3>
+      <div class="beach-card__tagline">The Wild Card</div>
+      <p class="beach-card__desc">
+        Menorca's most spectacular wild beach. Red-gold sand, rust-colored rocks, 
+        islets offshore — it looks like Mars meets the Mediterranean. Requires a 
+        thirty-minute hike from Binimel·là. Worth every step. Bring everything — 
+        there is absolutely nothing here except beauty.
+      </p>
+      <div class="beach-card__details">
+        <span class="beach-card__tag">35 min + 30 min hike</span>
+        <span class="beach-card__tag">Outstanding Snorkeling</span>
+        <span class="beach-card__tag--gold beach-card__tag">North Coast · Wild</span>
+      </div>
+    </div>
+    <div class="beach-card__map">
+      <iframe src="https://www.google.com/maps?q=40.0541,4.0440&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Beach 5: Binibeca -->
+  <div class="beach-card fade-in">
+    <div class="beach-card__info">
+      <div class="beach-card__number">05</div>
+      <h3 class="beach-card__name">Binibeca</h3>
+      <div class="beach-card__tagline">The Southeast Gem</div>
+      <p class="beach-card__desc">
+        Hypnotic gradations of blue water on the southeast coast. The whitewashed fishing 
+        village of Binibeca Vell nearby is worth a wander — and Bucaneros beach bar 
+        is the island's benchmark for feet-in-sand seafood.
+      </p>
+      <div class="beach-card__details">
+        <span class="beach-card__tag">25 min from Torralbenc</span>
+        <span class="beach-card__tag">Excellent off rocks</span>
+        <span class="beach-card__tag">Beach Bar</span>
+      </div>
+    </div>
+    <div class="beach-card__map">
+      <iframe src="https://www.google.com/maps?q=39.8380,4.2296&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Beach 6: Santo Tomás & Binigaus -->
+  <div class="beach-card fade-in">
+    <div class="beach-card__info">
+      <div class="beach-card__number">06</div>
+      <h3 class="beach-card__name">Santo Tomás & Binigaus</h3>
+      <div class="beach-card__tagline">The Coastal Walk</div>
+      <p class="beach-card__desc">
+        Santo Tomás is the nearest proper beach to Torralbenc — fine sand, shallow water, 
+        easy access. Walk west along the coast twenty minutes to reach Binigaus: a wild, 
+        undeveloped beach backed by pine forest. Binigaus is the hidden gem.
+      </p>
+      <div class="beach-card__details">
+        <span class="beach-card__tag">15 min from Torralbenc</span>
+        <span class="beach-card__tag">Easy Access</span>
+        <span class="beach-card__tag--gold beach-card__tag">20 min walk to Binigaus</span>
+      </div>
+    </div>
+    <div class="beach-card__map">
+      <iframe src="https://www.google.com/maps?q=39.9142,4.0326&z=15&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Beach 7: Cala Algaiarens -->
+  <div class="beach-card fade-in">
+    <div class="beach-card__info">
+      <div class="beach-card__number">07</div>
+      <h3 class="beach-card__name">Cala Algaiarens</h3>
+      <div class="beach-card__tagline">La Vall · Twin Bays</div>
+      <p class="beach-card__desc">
+        Twin horseshoe bays on the northwest coast. Shallow, sheltered water backed by 
+        pine forest. Turtles splash around here. Ten-minute walk from the car park. 
+        If you make it to the north coast, this is the gentle complement to Pregonda's drama.
+      </p>
+      <div class="beach-card__details">
+        <span class="beach-card__tag">40 min + 10 min walk</span>
+        <span class="beach-card__tag">Good Snorkeling</span>
+        <span class="beach-card__tag--gold beach-card__tag">Northwest · Quiet</span>
+      </div>
+    </div>
+    <div class="beach-card__map">
+      <iframe src="https://www.google.com/maps?q=40.0463,3.8670&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== INTERSTITIAL ====== -->
+<div class="interstitial interstitial--gold fade-in">
+  <p class="interstitial__quote">
+    "The biggest decision of the day is which cala to discover. 
+    The second biggest is whether to have the caldereta for lunch or dinner."
+  </p>
+</div>
+
+
+<!-- ====== WHERE TO STAY ====== -->
+<section class="hotels-section" id="stay">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom: clamp(2rem, 4vw, 4rem);">
+      <div class="section-label section-label--dark">02 · Where to Stay</div>
+      <h2 class="section-title">Three Hotels,<br>Three Temperaments</h2>
+      <p class="lead-text">
+        A vineyard farmstead for countryside romance, a French-cool finca for 
+        design-forward retreat, and a 16th-century palace for walking to dinner 
+        every night.
+      </p>
+    </div>
+  </div>
+
+  <!-- Hotel 1: Torralbenc -->
+  <div class="hotel-card fade-in">
+    <div class="hotel-card__info">
+      <div class="hotel-card__rank">★ The Recommendation</div>
+      <h3 class="hotel-card__name">Hotel Torralbenc</h3>
+      <div class="hotel-card__tagline">The One</div>
+      <p class="hotel-card__desc">
+        A restored 19th-century farmstead across seventy acres of vineyards and woodland on 
+        the south coast. Only 27 rooms. Saltwater infinity pool overlooking vineyards rolling 
+        to the sea. A working winery. A Basque chef running the kitchen. Candlelit private 
+        cave dinners for two. Condé Nast Traveller calls it one of Europe's best luxury farm stays.
+      </p>
+      <div class="hotel-card__price">€350–600 / night · Alaior, South Coast · Small Luxury Hotels</div>
+    </div>
+    <div class="hotel-card__map">
+      <iframe src="https://www.google.com/maps?q=39.9186,4.0717&z=15&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Hotel 2: Menorca Experimental -->
+  <div class="hotel-card fade-in">
+    <div class="hotel-card__info">
+      <div class="hotel-card__rank">The Alternative</div>
+      <h3 class="hotel-card__name">Menorca Experimental</h3>
+      <div class="hotel-card__tagline">The Cool Kid</div>
+      <p class="hotel-card__desc">
+        The Experimental Group brought their signature French-cool aesthetic to a converted 
+        19th-century finca on thirty hectares of farmland. Interiors by Dorothée Meilichzon — 
+        soft pinks, signature arch headboards. Nine freestanding villas for maximum privacy. 
+        The bar is the real star; this group's original expertise is nightlife and dining.
+      </p>
+      <div class="hotel-card__price">€400–700 / night · Alaior · Michelin Guide Recognized</div>
+    </div>
+    <div class="hotel-card__map">
+      <iframe src="https://www.google.com/maps?q=39.9082,4.0546&z=15&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Hotel 3: Faustino Gran -->
+  <div class="hotel-card fade-in">
+    <div class="hotel-card__info">
+      <div class="hotel-card__rank">The Town Option</div>
+      <h3 class="hotel-card__name">Faustino Gran</h3>
+      <div class="hotel-card__tagline">Relais & Châteaux · The Palace</div>
+      <p class="hotel-card__desc">
+        A 16th-century palace in Ciutadella's old town, meticulously restored into a 
+        Relais & Châteaux property. Soaring three-story ceilings, antique shuttered windows, 
+        olive-tree courtyards. Steps from the port, the cathedral, and the best restaurants 
+        on the island's western half. Walk to dinner. Walk home.
+      </p>
+      <div class="hotel-card__price">€350–650 / night · Ciutadella Old Town · Relais & Châteaux</div>
+    </div>
+    <div class="hotel-card__map">
+      <iframe src="https://www.google.com/maps?q=40.0005,3.8378&z=16&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== INTERSTITIAL ====== -->
+<div class="interstitial interstitial--seafoam fade-in">
+  <p class="interstitial__quote">
+    "Lobster season runs spring through late summer. June catches 
+    caldereta de langosta at its absolute prime."
+  </p>
+  <div class="interstitial__attr">The Essential Dish</div>
+</div>
+
+
+<!-- ====== WHERE TO EAT ====== -->
+<section class="dining-section" id="eat">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label section-label--dark">03 · Where to Eat</div>
+      <h2 class="section-title">The Table</h2>
+      <p class="lead-text">
+        From a harbor-front lobster institution to a former shoe factory turned fine 
+        dining, from clifftop seafood to a raw bar with a cult following. 
+        Menorca eats seriously.
+      </p>
+    </div>
+  </div>
+
+  <div class="container" style="padding: 0;">
+    <div class="dining-grid">
+
+      <!-- Featured: Café Balear -->
+      <div class="dining-card dining-card--featured fade-in">
+        <div class="dining-card__info">
+          <div class="dining-card__type">The Essential Meal</div>
+          <div class="the-pick-badge the-pick-badge--warm">THE PICK — ESSENTIAL MEAL</div>
+          <h3 class="dining-card__name">Café Balear</h3>
+          <div class="dining-card__sub">Three Generations · Their Own Fishing Boat</div>
+          <p class="dining-card__desc">
+            On the port of Ciutadella. The Rosa Santa Primera delivers daily to this kitchen. 
+            This is THE caldereta de langosta of Menorca — the version all others are measured against. 
+            Also iconic: lobster with fried eggs and chips. Book the interior; the harbor terrace 
+            is walk-in only. Arrive with patience and a cold drink.
+          </p>
+          <p class="the-order">The order: Caldereta de langosta (for two, ~€75pp). Then: lobster with fried eggs and chips.</p>
+          <div class="dining-card__location">Ciutadella Port · Caldereta ~€75/pp</div>
+        </div>
+        <div class="dining-card__map">
+          <iframe src="https://www.google.com/maps?q=39.9998,3.8309&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Smoix -->
+      <div class="dining-card fade-in">
+        <div class="dining-card__type">Fine Dining</div>
+        <div class="the-pick-badge the-pick-badge--warm">THE PICK — FINE DINING</div>
+          <h3 class="dining-card__name">Smoix</h3>
+        <div class="dining-card__sub">The Pre-Wedding Splurge</div>
+        <p class="dining-card__desc">
+          Former shoe factory, now Menorca's most inventive kitchen. Crawfish ravioli. 
+          Beluga lentils with king-prawn tempura. Whitewashed patio, exposed rafters, 
+          industrial-romantic. This is your celebration dinner.
+        </p>
+          <p class="the-order">The order: Crawfish ravioli, beluga lentils with king-prawn tempura. Book ahead.</p>
+        <div class="dining-card__map">
+          <iframe src="https://www.google.com/maps?q=39.9995,3.8350&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Sa Llagosta -->
+      <div class="dining-card fade-in">
+        <div class="dining-card__type">Lobster Village</div>
+        <h3 class="dining-card__name">Sa Llagosta</h3>
+        <div class="dining-card__sub">Fornells · Ground Zero for Caldereta</div>
+        <p class="dining-card__desc">
+          Fine-dining-meets-tavern in the whitewashed fishing village where caldereta 
+          was born. Outstanding lobster rice too. Try the scorpionfish with shiitake. 
+          Follow with ice cream at Ricardo Riera down the harbor.
+        </p>
+          <p class="the-order">The order: Caldereta, plus the scorpionfish with shiitake. Outstanding lobster rice too.</p>
+        <div class="dining-card__map">
+          <iframe src="https://www.google.com/maps?q=40.0543,4.1333&z=16&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Featured: Cantina at Hauser & Wirth -->
+      <div class="dining-card dining-card--featured fade-in">
+        <div class="dining-card__info">
+          <div class="dining-card__type">The Art Experience</div>
+          <h3 class="dining-card__name">Cantina at Hauser & Wirth</h3>
+          <div class="dining-card__sub">Illa del Rei · King's Island</div>
+          <p class="dining-card__desc">
+            A decommissioned 18th-century naval hospital on its own island, now housing a 
+            world-class art gallery. Only accessible by fifteen-minute ferry from Mahón harbor. 
+            Dinner is set amid an olive grove strung with lights. Tour the gallery before. 
+            Reservations include the ferry.
+          </p>
+          <div class="dining-card__location">Mahón Harbor · Ferry Included</div>
+        </div>
+        <div class="dining-card__map">
+          <iframe src="https://www.google.com/maps?q=39.8787,4.2762&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Pez Limón -->
+      <div class="dining-card fade-in">
+        <div class="dining-card__type">Creative Tapas</div>
+        <h3 class="dining-card__name">Pez Limón</h3>
+        <div class="dining-card__sub">Best Croquetas on the Island</div>
+        <p class="dining-card__desc">
+          Rattan-lit alley in Ciutadella. Creative Mediterranean tapas — the family-recipe 
+          croquetas are famous. Natural wine list the staff actually love talking about. 
+          The cheesecake has a following.
+        </p>
+        <div class="dining-card__map">
+          <iframe src="https://www.google.com/maps?q=39.9989,3.8382&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Oysters Menorca -->
+      <div class="dining-card fade-in">
+        <div class="dining-card__type">Raw Bar</div>
+        <h3 class="dining-card__name">Oysters Menorca</h3>
+        <div class="dining-card__sub">The Cult Spot · Mahón</div>
+        <p class="dining-card__desc">
+          Small, cool raw bar. Rotating European oysters, caviar, anchovy pasta 
+          with a cult following. Champagne by the glass. Reserve or arrive the 
+          moment they unlock the door.
+        </p>
+        <div class="dining-card__map">
+          <iframe src="https://www.google.com/maps?q=39.8891,4.2639&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Bucaneros -->
+      <div class="dining-card fade-in">
+        <div class="dining-card__type">Beach Bar</div>
+        <h3 class="dining-card__name">Bucaneros</h3>
+        <div class="dining-card__sub">Binibeca Beach · The Benchmark</div>
+        <p class="dining-card__desc">
+          Whitewashed fisherman's hut with a red door, wooden tables on the rocks, 
+          straw umbrellas. Fish off the rocks between courses. The island's 
+          benchmark beach bar. Walk-in; arrive early.
+        </p>
+          <p class="the-order">The order: Whatever fish came in. Walk-in, arrive early.</p>
+        <div class="dining-card__map">
+          <iframe src="https://www.google.com/maps?q=39.8380,4.2296&z=16&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Bodegas Binifadet -->
+      <div class="dining-card fade-in">
+        <div class="dining-card__type">Vineyard Dinner</div>
+        <h3 class="dining-card__name">Bodegas Binifadet</h3>
+        <div class="dining-card__sub">Under the Stars · String Lights</div>
+        <p class="dining-card__desc">
+          A pioneering Menorcan winery with a restaurant on a vine-shaded terrace. 
+          Sobrasada platters, chargrilled vegetable rice, pork cheeks with Mahón cheese. 
+          More special at night when the string lights come on.
+        </p>
+          <p class="the-order">The order: Sobrasada platter, chargrilled vegetable rice, estate wine. Better at night under string lights.</p>
+        <div class="dining-card__map">
+          <iframe src="https://www.google.com/maps?q=39.8556,4.2618&z=16&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== COFFEE ====== -->
+<section class="coffee-section" id="coffee">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label section-label--gold">04 · The Coffee Trail</div>
+      <h2 class="section-title">An Honest<br>Caffeine Report</h2>
+      <p class="lead-text">
+        Menorca's specialty coffee scene is small but real — concentrated in 
+        Ciutadella with a couple of outposts in Mahón. Don't expect Melbourne. 
+        But you can get a proper flat white. Here are the two that anchor 
+        each town.
+      </p>
+    </div>
+
+    <div class="coffee-grid">
+      <!-- La Reina -->
+      <div class="coffee-card fade-in">
+        <div class="coffee-card__town">Ciutadella</div>
+        <h3 class="coffee-card__name">La Reina Specialty Coffee</h3>
+        <div class="coffee-card__tagline">Best Flat White on the Island</div>
+        <p class="coffee-card__desc">
+          Right on Plaça des Born. Consistently the best-pulled espresso in Ciutadella. 
+          Flat white €3.50. Large terrace for morning people-watching. Also open 
+          evenings 5–11pm for after-beach caffeine.
+        </p>
+        <div class="coffee-card__map">
+          <iframe src="https://www.google.com/maps?q=39.9992,3.8371&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Pigalle -->
+      <div class="coffee-card fade-in">
+        <div class="coffee-card__town">Mahón</div>
+        <h3 class="coffee-card__name">Pigalle</h3>
+        <div class="coffee-card__tagline">French Bakery · Mistral Beans from Mallorca</div>
+        <p class="coffee-card__desc">
+          French bakery in Mahón's colorful historic center. Specialty beans from 
+          Mistral, a roaster in Mallorca. The croissants and pain au chocolat are the 
+          real deal. Grab their payés sourdough for the beach.
+        </p>
+        <div class="coffee-card__map">
+          <iframe src="https://www.google.com/maps?q=39.8891,4.2639&z=17&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="coffee-extras fade-in">
+      <div class="coffee-extra">
+        <h4 class="coffee-extra__name">Better Coffee</h4>
+        <p class="coffee-extra__desc">Ciutadella · Tiny espresso bar rotating different beans daily. Proper specialty. Flat white €3.50.</p>
+      </div>
+      <div class="coffee-extra">
+        <h4 class="coffee-extra__name">Catedral Coffee</h4>
+        <p class="coffee-extra__desc">Ciutadella · Opens 7am — your jet-lag savior. Good flat whites, iced coffees, açaí bowls.</p>
+      </div>
+      <div class="coffee-extra">
+        <h4 class="coffee-extra__name">Pipet & Co</h4>
+        <p class="coffee-extra__desc">Mahón · Best breakfast in town. Perfectly poached eggs, avocado, solid coffee. On Plaça Bastió.</p>
+      </div>
+    </div>
+
+    <div class="coffee-note fade-in">
+      Your mornings at Torralbenc start with their included breakfast — Mahón cheese, 
+      local produce, estate quality. On days in Ciutadella, hit La Reina. 
+      Mahón days: Pigalle. Don't stress about coffee on beach days.
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== INTERSTITIAL ====== -->
+<div class="interstitial interstitial--charcoal fade-in">
+  <p class="interstitial__quote" style="color: var(--gold);">
+    "Sunset in June: 9:20pm. Fifteen hours of daylight. 
+    Long golden evenings are the native currency here."
+  </p>
+  <div class="interstitial__attr" style="color: rgba(255,255,255,0.3);">June on Menorca</div>
+</div>
+
+
+<!-- ====== GOLDEN HOUR ====== -->
+<section class="golden-section" id="golden">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom: clamp(2rem, 4vw, 4rem);">
+      <div class="section-label section-label--dark">05 · Golden Hour</div>
+      <h2 class="section-title">Where to Watch<br>the Sun Go Down</h2>
+      <p class="lead-text">
+        On an island this size, the west coast sunset spots feel like ritual. 
+        Three venues, three temperatures — from clifftop cocktails in a cave 
+        to a lighthouse dinner to a raw stone arch over open water.
+      </p>
+    </div>
+  </div>
+
+  <div class="golden-cards">
+
+    <!-- Artrutx Sea Club -->
+    <div class="golden-card fade-in">
+      <div class="golden-card__info">
+        <div class="golden-card__icon">◐</div>
+        <h3 class="golden-card__name">Artrutx Sea Club</h3>
+        <div class="golden-card__tagline">Best Sunset Dinner on the Island</div>
+        <p class="golden-card__desc">
+          Directly beneath the Cap d'Artrutx lighthouse, built 1858. The terrace faces due 
+          west over open water — arguably the best sunset seat on Menorca. Come an hour 
+          before sunset for cocktails on the Balinese beds. Stay through dinner. 
+          Mediterranean sharing plates, seafood rices. You're here for the theater.
+        </p>
+      </div>
+      <div class="golden-card__map">
+        <iframe src="https://www.google.com/maps?q=39.9152,3.8200&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <!-- Cova d'en Xoroi -->
+    <div class="golden-card fade-in">
+      <div class="golden-card__info">
+        <div class="golden-card__icon">◑</div>
+        <h3 class="golden-card__name">Cova d'en Xoroi</h3>
+        <div class="golden-card__tagline">A Bar Carved into the Cliff</div>
+        <p class="golden-card__desc">
+          A famous bar literally carved into the clifftop at Cala en Porter. 
+          Multiple cave terraces open to the sea at different heights. 
+          Sunset cocktails from inside the rock. Becomes a club later — 
+          but at golden hour, it's all atmosphere and vertigo.
+        </p>
+      </div>
+      <div class="golden-card__map">
+        <iframe src="https://www.google.com/maps?q=39.8781,4.1314&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <!-- Pont d'en Gil -->
+    <div class="golden-card fade-in">
+      <div class="golden-card__info">
+        <div class="golden-card__icon">◓</div>
+        <h3 class="golden-card__name">Pont d'en Gil</h3>
+        <div class="golden-card__tagline">The Natural Stone Arch · Walk the Camí</div>
+        <p class="golden-card__desc">
+          A dramatic natural stone arch over the sea on the west coast near Ciutadella. 
+          No bar, no restaurant — just you, the rock, and the light. Walk here via the 
+          Camí de Cavalls coastal path. The arch frames the sunset like a cathedral window. 
+          Bring a bottle of something cold.
+        </p>
+      </div>
+      <div class="golden-card__map">
+        <iframe src="https://www.google.com/maps?q=40.0123,3.8020&z=16&t=k&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====== THE INSIDER TIP ====== -->
+<section class="insider-section">
+  <div class="container--narrow fade-in">
+    <div class="insider-number">07</div>
+    <div class="section-label section-label--light" style="color: rgba(255,255,255,0.4);">The Insider Tip</div>
+    <h2 class="insider-title">The Drink You Cannot<br>Leave Without Having</h2>
+    <p class="insider-body">
+      <strong>Pomada.</strong> Gin Xoriguer — distilled in Mahón's port since the 18th-century 
+      British occupation — mixed with cloudy lemonade over ice. It's dangerously 
+      easy to drink. Order one at every sunset. Buy a distinctive green-handled 
+      bottle at the distillery to take home. The recipe is older than the country 
+      that occupies the island.
+    </p>
+    <div class="insider-pomada">
+      <div class="insider-pomada__title">Gin Xoriguer Distillery</div>
+      <p class="insider-pomada__desc">
+        Visit the working distillery on Mahón's port. Taste the gin straight, 
+        then as pomada. Buy the bottle with the green handle — it's the 
+        only souvenir that matters. The distillery also makes herbes 
+        and a palo liqueur worth trying.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  Menorca · <span>June 2027</span> · The Decompression
+</footer>
+
+
+<script>
+// ====== SCROLL ANIMATIONS ======
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ====== STICKY NAV ======
+let lastScroll = 0;
+const nav = document.getElementById('mainNav');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+  if (currentScroll > window.innerHeight * 0.8) {
+    nav.classList.add('visible');
+  } else {
+    nav.classList.remove('visible');
+  }
+  lastScroll = currentScroll;
+}, { passive: true });
+</script>
+
+
+<!-- ═══════════════════════════════════════════
+     ONCE IN A LIFETIME
+     ═══════════════════════════════════════════ -->
+<section style="background: #f5f3ee; padding: 80px 32px;">
+  <div class="container-narrow" style="max-width: 800px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="section-label" style="letter-spacing: 5px; font-family: Inter, sans-serif; font-size: 11px; font-weight: 600;">The Moments That Matter</span>
+    </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Caldereta at Café Balear at sunset</div>
+    <p class="once-in-a-lifetime__desc">Their own boat catches the lobster that morning. The golden light on Ciutadella port while you eat is therapy you can't prescribe.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Cala Pregonda hike</div>
+    <p class="once-in-a-lifetime__desc">Thirty minutes from Binimel·là through wild scrubland to red-gold sand and rust-colored rocks. Mars meets the Mediterranean.</p>
+  </div>
+
+  <div class="once-in-a-lifetime">
+    <div class="once-in-a-lifetime__label">Once in a Lifetime</div>
+    <div class="once-in-a-lifetime__title">Cantina at Hauser & Wirth on Illa del Rei</div>
+    <p class="once-in-a-lifetime__desc">A decommissioned 18th-century naval hospital turned world-class gallery on King's Island. Dinner in an olive grove strung with lights.</p>
+  </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INSIDER TIPS + WHAT TO SKIP
+     ═══════════════════════════════════════════ -->
+<section style="background: #fefcf7; padding: 80px 32px;">
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 32px;">
+
+  <div class="insider-tip-box">
+    <div class="insider-tip-box__label">Insider Tips</div>
+    <ul><li>Menorca Experimental is inland — don't expect ocean views from the hotel. The beaches are 10-15 min by car.</li><li>Rent an automatic transmission car via Chase UR points (26K) at the airport. You'll need it — no Ubers here.</li><li>Caldereta is a two-person minimum and runs ~€75+ per person for the lobster. Budget accordingly.</li><li>June is early season — beaches are quieter, but some beach bars and restaurants don't open until mid-June. Check before driving.</li></ul>
+  </div>
+
+  <div class="skip-box">
+    <div class="skip-box__label">What to Skip</div>
+    <ul><li>Fornells harbor-front tourist restaurants with giant menus in 6 languages — stick to Sa Llagosta and Es Cranc for the real caldereta.</li><li>Cala Galdana — once beautiful, now overdeveloped with high-rise hotels. Go to Mitjana instead (15 min walk from Galdana's parking).</li><li>Son Bou mega-beach — largest on the island but feels like Benidorm. Not the Menorca experience.</li></ul>
+  </div>
+  </div>
+</section>
+
+</body>
+</html>
